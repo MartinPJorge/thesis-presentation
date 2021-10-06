@@ -1,0 +1,120 @@
+\begin{tikzpicture}[scale=.65,every node/.style={scale=0.65}]
+    %%%%%%%%%%%%%%%%%%%%%
+    % Gridded rectangle %
+    %%%%%%%%%%%%%%%%%%%%%
+    % Top brace
+    \draw [ultra thick, decorate,decoration={brace,amplitude=4pt}] (2.2,5.2) -- (3.3,5.2) node [black,midway,yshift=0.5cm] {};
+
+    \draw (0,0) rectangle (5,5);
+    \foreach \c in {1.1, 2.2, 3.3, 4.4} {
+        \draw[dashed, color=gray] (\c, 0) -- (\c, 5);
+    }
+    \foreach \r in {3.9, 2.8, 1.7, 0.6} {
+        \draw[dashed, color=gray] (0, \r) -- (5, \r);
+    }
+
+
+    % Area names
+    \edef\index{0}
+    \foreach \r in {5, 3.9, 2.8, 1.7, 0.6} {
+        \foreach \c in {0, 1.1, 2.2, 3.3, 4.4} {
+            \node at (\c + 0.3, \r - 0.25) {\small{$R_{\index}$}};
+            \pgfmathparse{int(\index+1)}
+            \xdef\index{\pgfmathresult}
+        }
+    }
+
+    % hashed area
+    \draw[fill=white] (2.2,5) rectangle (3.3,3.9);
+    \draw[pattern=north west lines, pattern color=black] (2.2,5) rectangle (3.3,3.9);
+    \draw[fill=white] (2.27, 4.95) rectangle (2.7, 4.6);
+    \node[name=highlighted] at (2.5, 4.75){\small{$R_2$}};
+
+    % Top left coordinate
+    \draw[fill=black] (0,5) circle [radius=2.5pt];
+    \node at (0, 5.4) {$(x_{1,l},\ x_{2,t})$};
+
+    % Bottom right coordinate
+    \draw[fill=black] (5,0) circle [radius=2.5pt];
+    \node at (5, -0.4) {$(x_{1,r},\ x_{2,b})$};
+
+    % x1 side
+    \draw[|-|] (1.1, -0.2) -- (2.2, -0.2);
+    \node at (1.6, -0.5) {$x_{1,s}$};
+
+    % x2 side
+    \draw[|-|] (-0.2, 0.6) -- (-0.2, 1.6);
+    \node at (-0.6, 1.1) {$x_{2,s}$};
+
+    % Region tag
+    \node at (2.5, -1) {\large{$R$}};
+
+
+    %%%%%%%%%%%%%%%%%%
+    % AAUs Matern II %
+    %%%%%%%%%%%%%%%%%%
+    \draw (2.75,5.3) -- (2.75, 5.65) -- (9.5, 5.65) -- (9.5, 5.5);
+    % Top brace
+    \draw [ultra thick, decorate,decoration={brace,amplitude=7pt}] (7,5.2) -- (12,5.2) node [black,midway,yshift=0.5cm] {};
+
+    % Region tag
+    \node at (9.5, -1) {\large{$R_2$}};
+
+
+    % Bottom right coordinate
+    \draw[fill=black] (12,0) circle [radius=2.5pt];
+    \node at (12, -0.4) {$(x_{1,r}^2,\ x_{2,b}^2)$};
+
+    \draw (7,0) rectangle (12,5);
+    \foreach \r in {1.66, 3.32} {
+        \draw[dashed, color=gray] (7, \r) -- (12, \r);
+    }
+    \foreach \c in {8.66, 10.32} {
+        \draw[dashed, color=gray] (\c, 0) -- (\c, 5);
+    }
+
+    % Center AAU
+    \draw[color=gray] (9.7, 2.5) -- (10.32, 2.5);
+    \node[cross out, draw, anchor=text, thick, color=gray, line cap=round, scale=0.5] at (9.5, 2.35) {};
+    \node at (9.5, 2.5) {\includegraphics[width=0.02\textwidth]{img/base-station}};
+    \draw[color=gray] (9.5, 2.5) circle (0.83);
+    \node at (10, 2.3) {\small{$r$}};
+    % Non-survival AAU
+    \node[cross out, draw, anchor=text, thick, color=gray, line cap=round, scale=0.5] at (9.2, 2.2) {};
+    \node[cross out, draw, anchor=text, thick, color=gray, line cap=round, scale=0.5] at (9.7, 2) {};
+    
+    % Bottom right AAU
+    \node[cross out, draw, anchor=text, thick, color=gray, line cap=round, scale=0.5] at (10.5, 0.85) {};
+    \node at (10.5, 1) {\includegraphics[width=0.02\textwidth]{img/base-station}};
+    \draw[color=gray] (10.5, 1) circle (0.83);
+    %\node[cross out, draw, anchor=text, thick, color=gray, line cap=round, scale=0.5] at (10.7, 0.4) {};
+    %\node[cross out, draw, anchor=text, thick, color=gray, line cap=round, scale=0.5] at (10,1.2) {};
+    %\node[cross out, draw, anchor=text, thick, color=gray, line cap=round, scale=0.5] at (10.2, 0.8) {};
+
+    % Center right AAU
+    \node[cross out, draw, anchor=text, thick, color=gray, line cap=round, scale=0.5] at (11.14, 2.75) {};
+    \node at (11.14, 2.9) {\includegraphics[width=0.02\textwidth]{img/base-station}};
+    \draw[color=gray] (11.14, 2.9) circle (0.83);
+    \node[cross out, draw, anchor=text, thick, color=gray, line cap=round, scale=0.5] at (11.3, 2.4) {};
+    \node[cross out, draw, anchor=text, thick, color=gray, line cap=round, scale=0.5] at (10.8, 2.6) {};
+    \node[cross out, draw, anchor=text, thick, color=gray, line cap=round, scale=0.5] at (11, 2.3) {};
+
+    % Top AAU
+    \node[cross out, draw, anchor=text, thick, color=gray, line cap=round, scale=0.5] at (10, 4) {};
+    \node at (10, 4.15) {\includegraphics[width=0.02\textwidth]{img/base-station}};
+    \draw[color=gray] (10, 4.15) circle (0.83);
+    \node[cross out, draw, anchor=text, thick, color=gray, line cap=round, scale=0.5] at (11, 2.3) {};
+    \node[cross out, draw, anchor=text, thick, color=gray, line cap=round, scale=0.5] at (9.7, 4) {};
+    \node[cross out, draw, anchor=text, thick, color=gray, line cap=round, scale=0.5] at (10, 3.7) {};
+    \node[cross out, draw, anchor=text, thick, color=gray, line cap=round, scale=0.5] at (9.5, 3.6) {};
+
+    % Top left AAU
+    \node[cross out, draw, anchor=text, thick, color=gray, line cap=round, scale=0.5] at (8.3, 3.85) {};
+    \node at (8.3, 4) {\includegraphics[width=0.02\textwidth]{img/base-station}};
+    \draw[color=gray] (8.3, 4) circle (0.83);
+    \node[cross out, draw, anchor=text, thick, color=gray, line cap=round, scale=0.5] at (8,3.5) {};
+
+    % lambda increasing direction
+    \draw[thick, ->] (7.2, 0.2) -- (7.86, 0.86) node[pos=1.25]{$\nabla\lambda$};
+
+\end{tikzpicture}
