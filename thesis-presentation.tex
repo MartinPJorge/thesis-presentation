@@ -13,13 +13,16 @@
 % BIBLIOGRAPHY
 \usepackage[style=numeric, 
             backend=biber,
-            giveninits=true]{biblatex}
+            giveninits=true,
+            maxbibnames=9]{biblatex}
 \setbeamertemplate{bibliography item}{\insertbiblabel}
 \addbibresource{bibliography.bib}
+\preto\fullcite{\AtNextCite{\defcounter{maxnames}{99}}}
 % MATH
 \usepackage{amsmath,amsfonts,amssymb,amsthm} % For math equations, theorems, symbols, etc
 \usepackage{mathtools}
 \usepackage{dsfont}
+\DeclareMathOperator*{\argmax}{arg\,max}
 
 
 
@@ -106,6 +109,21 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \tableofcontents[subsectionstyle=show/shaded/hide,sectionstyle=show/shaded]
 \end{frame}
 
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=.8\textwidth]{img/pop-and-antennas-no-labels.pdf}
+        \caption{Illustration of BS and PoPs in Madrid }
+        \label{fig:bs-pops-no-label}
+    \end{figure}
+\end{frame}
+
+
+
 \begin{frame}
     \frametitle{\secname}
     \framesubtitle{\subsecname}
@@ -135,7 +153,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 \end{frame}
 
 
-\subsection{Thesis contributions}
+\subsection{Thesis contribution}
 \begin{frame}
     \frametitle{Outline}
     \tableofcontents[subsectionstyle=show/shaded/hide,sectionstyle=show/shaded]
@@ -375,9 +393,9 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 \begin{figure}
     \centering
-    \subfigure[FDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 8.5cm 0.25cm 6.7cm, width=0.45\textwidth]{img/hoces-del-cabriel-ii-m1}}
+    \subfigure[FDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 8.5cm 0.25cm 6.7cm, width=0.485\textwidth]{img/hoces-del-cabriel-ii-m1}}
      ~                       
-    \subfigure[TDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 8.5cm 0.25cm 6.7cm, width=0.45\textwidth]{img/hoces-del-cabriel-i-iii-m1}}\\
+    \subfigure[TDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 8.5cm 0.25cm 6.7cm, width=0.485\textwidth]{img/hoces-del-cabriel-i-iii-m1}}\\
     \caption{\textbf{Highway scenario} (Hoces del Cabriel A3) -- $C_{A,M1}=$covered BSs by M1 MEC PoP}
     \label{fig:madrid}
 \end{figure}
@@ -411,13 +429,14 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 \end{frame}
 
 \begin{frame}
-    \frametitle{Outline}
-    Publications
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+    Publications:
     \begin{itemize}
         \item \fullcite{modelling-bs}
         \item \fullcite{5gen}
     \end{itemize}
-    Open-source
+    Open-source:
     \begin{itemize}
         \item \url{github.com/MartinPJorge/mec-generator}
         \item \href{https://github.com/MartinPJorge/mec-generator/tree/5g-infra-gen}{5GEN R package}
@@ -430,57 +449,282 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 
 
-\begin{frame}
-    \frametitle{\insertsection}
-    \textbf{Vertical services} (VS) contain:
-    \begin{itemize}
-        \item Virtual Network Functions (\textbf{VNFs}); and
-        \item Virtual Links (\textbf{VLs}).
-    \end{itemize}
-\end{frame}
-
 
 \section{NFV Orchestration in federated environments}
 \subsection{State of the art}
 \begin{frame}
-    \frametitle{\insertsection}
-    \textbf{Vertical services} (VS) contain:
-    \begin{itemize}
-        \item Virtual Network Functions (\textbf{VNFs}); and
-        \item Virtual Links (\textbf{VLs}).
-    \end{itemize}
+    \frametitle{Outline}
+    \tableofcontents[subsectionstyle=show/shaded/hide,sectionstyle=show/shaded]
 \end{frame}
 
 
 
-\section{NFV orchestration for 5G networks}
+
+
 \begin{frame}
-    \frametitle{\insertsection}
-    \textbf{Vertical services} (VS) contain:
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{img/federation.pdf}
+        \caption{Service federation}
+        \label{fig:federation}
+    \end{figure}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+
+    % Horizon2020 projects dealing with federation:
+    % \begin{itemize}
+    %     \item 5GEx~\cite{5gex-prototype}, 5G-TRANSFORMER~\cite{5g-transformer}, 5GROWTH~\cite{5growth}
+    % \end{itemize}\pause
+
+    Orchestration and \textbf{fixed pricing} in multi-domain:
     \begin{itemize}
-        \item Virtual Network Functions (\textbf{VNFs}); and
-        \item Virtual Links (\textbf{VLs}).
+        \item Alternating Direction Method of Multipliers (ADMM)~\cite{ad3Distributed}
+        \item branching heuristic~\cite{consolidation}
+        \item graph-based message passing~\cite{vertex-centric}
+        \item greedy with backtracking~\cite{balazsEmbedding} \pause
+        \item \textbf{\color{red}cutoffs in Dijkstra, DFS and BFS~\cite{multi-domain-msc}}
+        \item \textbf{\color{red}Q-learning federation~\cite{icc}}
+    \end{itemize} \pause
+    Orchestration and \textbf{\color{red}dynamic pricing} in multi-domain: \pause
+    \begin{itemize}
+        \item \textbf{\color{red}real-price traces AWS}\pause
+        \item \textbf{\color{red}Deep Q-learning}\pause
+        \item \textbf{\color{red}TID scenario}
     \end{itemize}
 \end{frame}
 
-\section{Scaling of V2N services: a study case}
+
+
+\subsection{Thesis contribution}
 \begin{frame}
-    \frametitle{\insertsection}
-    \textbf{Vertical services} (VS) contain:
+    \frametitle{Outline}
+    \tableofcontents[subsectionstyle=show/shaded/hide,sectionstyle=show/shaded]
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=.8\textwidth]{img/local-deploy.pdf}
+        \caption{Business model - local deployment\footnote{Based on Kiril Antevski illustration}}
+        \label{fig:local-deploy}
+    \end{figure}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=.7\textwidth]{img/federation-deploy.pdf}
+        \caption{Business model - federate deployment\footnote{Based on Kiril Antevski illustration}}
+        \label{fig:local-deploy}
+    \end{figure}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+    \begin{minipage}{0.3\textwidth}
+        \textit{t3a.small}:
+        \begin{itemize}
+            \item 2 CPUs
+            \item memory 2 GB
+            \item storage 100 GB
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.65\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{img/experiment-aws-prices}
+            \caption{AWS service prices during 2020 in west Europe }
+            \label{fig:aws-prices}
+        \end{figure}
+    \end{minipage}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=.65\textwidth]{img/rho-arrivals}
+        \caption{impact of prices on arriving users -- based on tid study~\cite{tid} and~\cite{xavierpricing}}
+        \label{fig:arrivals}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    Considering:
     \begin{itemize}
-        \item Virtual Network Functions (\textbf{VNFs}); and
-        \item Virtual Links (\textbf{VLs}).
+        \item Price changes
+        \item Available resources (CPU, memory, disk)
+        \item Service lifetime (e.g., 2 days)
+    \end{itemize} \pause
+    For each service $\sigma$, decide / take an \textbf{action}:
+    \begin{itemize}
+        \item $x(\sigma)=0$: \textbf{reject} 
+        \item $x(\sigma)=1$: \textbf{local} 
+        \item $x(\sigma)=2$: \textbf{federate}
     \end{itemize}
 \end{frame}
 
-\section{Future work}
+
+
+
+
 \begin{frame}
-    \frametitle{\insertsection}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+
+    \begin{minipage}{.45\textwidth}
+        \textbf{Reward} based on:
+        \begin{itemize}
+            \item expenditure (federation fee)
+            \item earnings
+            \item deployed services
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{.5\textwidth}
+    \begin{figure}
+        \centering
+        \includegraphics[width=.9\textwidth]{img/available}
+        \caption{Environment snapshot at time $t$.}
+        \label{fig:earnings-actions}
+    \end{figure}
+    \end{minipage}
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+
+    \begin{minipage}{.45\textwidth}
+        \textbf{Online optimization problem}:
+        \begin{itemize}
+            \item objective: $\max_{X_t} \frac{1}{T}\sum_t r^{(t)}(X_t)$
+            \item constraints:
+                \begin{itemize}
+                    \item CPU
+                    \item memory
+                    \item disk
+                \end{itemize}
+        \end{itemize}
+        NP-hard: knapsack problem equivalence
+    \end{minipage}\pause
+    \hfill
+    \vline
+    \hfill
+    \begin{minipage}{.45\textwidth}
+        \textbf{Markov Decision Problem} (MDP):
+        \begin{itemize}
+            \item find policy $\pi$ to: $\max_\pi \mathbb{E}_{x(\sigma)\sim\pi}\left[ \sum_t \gamma^{t}\ r^{(t)}(\pi) \right]$
+            \item action space $\mathcal{A}=\{0,1,2\}$
+            \item state space $\mathcal{S}$:
+                \begin{itemize}
+                    \item available \& requested resources
+                    \item current prices
+                    \item service lifetime
+                \end{itemize}
+            \item instant reward $r^{(t)}(\pi)$
+        \end{itemize}
+    \end{minipage}
+    
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    \begin{figure}
+        \centering
+        \input{dqn.tex}
+        \caption{DQN architecture to decide rejection/local/federate}
+    \end{figure}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    \textbf{Experimentation}:
     \begin{itemize}
-        \item integrate OKpi with RoS\footnote{robotic operating system}
-        \item migration of robot remote driving component with OKpi
+        \item TID infrastructure \& resources~\cite{tid}\pause
+        \item AWS prices dataset:
+            \begin{itemize}
+                \item training 29/02/2020 -- 02/05/2020
+                \item testing\! 03/05/2020 --31/07/2020
+            \end{itemize}\pause
+        \item Poissonian arrival of users
     \end{itemize}
 \end{frame}
+
+
+
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    TODO - here just show 3x CDFs (resource usage with DQN)
+    \begin{figure}
+        \centering
+        
+        \includegraphics[width=.9\textwidth, trim={0 20em 0 0},clip]{img/cdfs-all-decisions_edited.pdf}
+        \caption{cdf}
+        \label{fig:cdf-dqn}
+    \end{figure}
+\end{frame}
+
+
+
+
+
+
+
+\subsection{Output}
+
+
 
 
 \begin{frame}
