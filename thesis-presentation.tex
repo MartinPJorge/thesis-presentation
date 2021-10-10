@@ -286,7 +286,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \begin{minipage}{.5\textwidth}
         \begin{figure}
             \centering
-            \only<1>{\includegraphics[width=.9\textwidth]{img/madrid-map-antennas.png}}
+            \only<1>{\includegraphics[width=.9\textwidth]{img/madrid-map-antennas.png}}%
             \only<2>{\includegraphics[width=.9\textwidth]{img/where-pop.pdf}}
             \caption{Location of BSs}
             \label{fig:bs-location}
@@ -353,7 +353,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     }
     \begin{figure}
         \centering
-        \only<1>{\includegraphics[width=0.7\textwidth]{img/generation-algo-1.pdf}}
+        \only<1>{\includegraphics[width=0.7\textwidth]{img/generation-algo-1.pdf}}%
         \only<2>{\includegraphics[width=0.7\textwidth]{img/generation-algo-2.pdf}}
         \caption{How to select MEC PoP location}
         \label{fig:algo-pop-location}
@@ -521,7 +521,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \begin{figure}
         \centering
         \includegraphics[width=.8\textwidth]{img/local-deploy.pdf}
-        \caption{Business model - local deployment\footnote{Based on Kiril Antevski illustration}}
+        \caption{Business model - local deployment\footnote{Based on Kiril Antevski illustration}.}
         \label{fig:local-deploy}
     \end{figure}
 \end{frame}
@@ -535,7 +535,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \begin{figure}
         \centering
         \includegraphics[width=.7\textwidth]{img/federation-deploy.pdf}
-        \caption{Business model - federate deployment\footnote{Based on Kiril Antevski illustration}}
+        \caption{Business model - federate deployment\footnote{Based on Kiril Antevski illustration}.}
         \label{fig:local-deploy}
     \end{figure}
 \end{frame}
@@ -557,7 +557,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         \begin{figure}
             \centering
             \includegraphics[width=\textwidth]{img/experiment-aws-prices}
-            \caption{AWS service prices during 2020 in west Europe }
+            \caption{AWS service prices during 2020 in west Europe.}
             \label{fig:aws-prices}
         \end{figure}
     \end{minipage}
@@ -571,7 +571,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \begin{figure}
         \centering
         \includegraphics[width=.65\textwidth]{img/rho-arrivals}
-        \caption{impact of prices on arriving users -- based on tid study~\cite{tid} and~\cite{xavierpricing}}
+        \caption{Impact of prices on arriving users -- based on tid study~\cite{tid} and~\cite{xavierPricing}.}
         \label{fig:arrivals}
     \end{figure}
 \end{frame}
@@ -581,18 +581,31 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \frametitle{\secname}
     \framesubtitle{\subsecname}
 
-    Considering:
-    \begin{itemize}
-        \item Price changes
-        \item Available resources (CPU, memory, disk)
-        \item Service lifetime (e.g., 2 days)
-    \end{itemize} \pause
-    For each service $\sigma$, decide / take an \textbf{action}:
-    \begin{itemize}
-        \item $x(\sigma)=0$: \textbf{reject} 
-        \item $x(\sigma)=1$: \textbf{local} 
-        \item $x(\sigma)=2$: \textbf{federate}
-    \end{itemize}
+    \begin{minipage}{.4\textwidth}
+        Considering:
+        \begin{itemize}
+            \item Price changes
+            \item Available resources (CPU, memory, disk)
+            \item Service lifetime (e.g., 2 days)
+        \end{itemize}
+        \only<1>{\vspace{6em}}
+        \only<2>{For each service $\sigma$, decide / take an \textbf{action}:
+            \begin{itemize}
+                \item $x(\sigma)=0$: \textbf{reject} 
+                \item $x(\sigma)=1$: \textbf{local} 
+                \item $x(\sigma)=2$: \textbf{federate}
+            \end{itemize}
+        }
+    \end{minipage}
+    \begin{minipage}{.5\textwidth}
+        \only<2>{\begin{figure}
+                \centering
+                \includegraphics[width=.8\textwidth]{img/decisions}
+                \caption{Possible actions.}
+                \label{fig:decisions}
+            \end{figure}
+        }
+    \end{minipage}
 \end{frame}
 
 
@@ -605,12 +618,17 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 
     \begin{minipage}{.45\textwidth}
-        \textbf{Reward} based on:
-        \begin{itemize}
-            \item expenditure (federation fee)
-            \item earnings
-            \item deployed services
-        \end{itemize}
+        Obtained \textbf{reward}:
+        \begin{multline}
+            \only<1>{r^{(t)}(X_t) := \sum_{\substack{\sigma:~ x(\sigma)=0\\a(\sigma) \le t\le d(\sigma)}}p^{a(\sigma)}(\sigma) + \\
+            \sum_{\substack{\sigma:~ x(\sigma)=1\\ a(\sigma) \le t\le d(\sigma)}} \left[ p^{a(\sigma)}(\sigma) - f^{(t)}(\sigma) \right]}
+            \only<2>{r^{(t)}(X_t) := \highlight[upper={fill=red!20},lower={fill=red!20},line={red!20}]{\sum_{\substack{\sigma:~ x(\sigma)=0\\a(\sigma) \le t\le d(\sigma)}}p^{a(\sigma)}(\sigma)}{local} + \\
+            \sum_{\substack{\sigma:~ x(\sigma)=1\\ a(\sigma) \le t\le d(\sigma)}} \left[ p^{a(\sigma)}(\sigma) - f^{(t)}(\sigma) \right]}
+            \only<3>{r^{(t)}(X_t) := \sum_{\substack{\sigma:~ x(\sigma)=0\\a(\sigma) \le t\le d(\sigma)}}p^{a(\sigma)}(\sigma) + \\
+            \highlight[upper={fill=yellow!20},lower={fill=yellow!20},line={yellow!20}]{\sum_{\substack{\sigma:~ x(\sigma)=1\\ a(\sigma) \le t\le d(\sigma)}} \left[ p^{a(\sigma)}(\sigma) - f^{(t)}(\sigma) \right]}{federation}}
+            \label{eq:instant-reward-highlighted}
+        \end{multline}
+
     \end{minipage}
     \begin{minipage}{.5\textwidth}
     \begin{figure}
@@ -676,7 +694,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \begin{figure}
         \centering
         \input{dqn.tex}
-        \caption{DQN architecture to decide rejection/local/federate}
+        \caption{DQN architecture to decide rejection/local/federate.}
     \end{figure}
 \end{frame}
 
@@ -706,13 +724,48 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \frametitle{\secname}
     \framesubtitle{\subsecname}
 
-    TODO - here just show 3x CDFs (resource usage with DQN)
+    \begin{minipage}{0.3\textwidth}
+        Comparison of:
+        \begin{itemize}
+            \item Optimal
+            \item DQN
+            \item Q-table
+            \item Q-table explore
+            \item greedy
+        \end{itemize}
+        \only<2->{Results:
+            \begin{itemize}
+                \item near-optimal
+                \only<3>{\item react upon peaks}
+            \end{itemize}
+        }
+    \end{minipage}
+    \begin{minipage}{0.63\textwidth}
     \begin{figure}
         \centering
         
-        \includegraphics[width=.9\textwidth, trim={0 20em 0 0},clip]{img/cdfs-all-decisions_edited.pdf}
-        \caption{cdf}
+        \only<1>{\includegraphics[width=\textwidth]{img/cdfs-all-decisions_edited_dqn.pdf}}%
+        \only<2>{\includegraphics[width=\textwidth]{img/cdfs-all-decisions_edited_dqn_near_optimal.pdf}}%
+        \only<3>{\includegraphics[width=\textwidth]{img/cdfs-all-decisions_edited_dqn_highlighter.pdf}}
+        \caption{federation agents' performance.}
         \label{fig:cdf-dqn}
+    \end{figure}
+    \end{minipage}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    \begin{figure}
+        \centering
+        \subfigure[Increasing local resources.]{\includegraphics[width=.45\columnwidth]{img/shrink-local.eps}}\hspace{1em}
+        \subfigure[Increasing resources in federation.]{\includegraphics[width=.45\columnwidth]{img/shrink-federated.eps}}
+        \caption{Cumulative reward vs. available resources}
     \end{figure}
 \end{frame}
 
@@ -722,7 +775,137 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 
 
+
 \subsection{Output}
+\begin{frame}
+    \frametitle{Outline}
+    \tableofcontents[subsectionstyle=show/shaded/hide,sectionstyle=show/shaded]
+\end{frame}
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+    Publications:
+    \begin{itemize}
+        \item \fullcite{multi-domain-msc}
+        \item \fullcite{icc}
+        \item \fullcite{dqn}
+    \end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+    Open-source:
+    \begin{itemize}
+        \item \url{https://github.com/MartinPJorge/placement}
+        \item \url{https://github.com/MartinPJorge/5gt-federation}
+        \item \url{https://github.com/MartinPJorge/5gt-federation/tree/extensionICC/utils/aws}
+    \end{itemize}
+\end{frame}
+
+
+
+
+
+
+
+\section{NFV orchestration for 5G networks}
+\subsection{State of the art}
+\begin{frame}
+    \frametitle{Outline}
+    \tableofcontents[subsectionstyle=show/shaded/hide,sectionstyle=show/shaded]
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    \begin{figure}
+        \only<1>{\includegraphics[width=.6\textwidth]{img/fresco_var_thesis_scenario_base.pdf}}%
+        \only<2>{\includegraphics[width=.6\textwidth]{img/fresco_var_thesis_scenario_cloud.pdf}}%
+        \only<3>{\includegraphics[width=.6\textwidth]{img/fresco_var_thesis_scenario_edge.pdf}}%
+        \only<4>{\includegraphics[width=.6\textwidth]{img/fresco_var_thesis_scenario_fog.pdf}}
+        \caption{Virtual Network Function Embedding (VNE).}
+    \end{figure}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    Existing Virtual Network Embedding (VNE) solutions:
+    \begin{itemize}
+        \item latency-aware, bipartite graph \& Hungarian \cite{getting-the-most}
+        \item maxZ: latency-aware, relaxed ILP~\cite{maxZ}
+        \item z-TORCH: KPI monitoring, k-means VNF assign~\cite{z-TORCH}
+        \item AIA: meet latency and throughput~\cite{adaptive-interference}
+    \end{itemize}\pause
+    \textbf{\color{red}OKpi} accounts for:
+    \begin{itemize}
+        \item latency constraints
+        \item \textbf{\color{red}radio coverage}
+        \item \textbf{\color{red}geographical availability}
+        \item \textbf{\color{red}reliability}
+    \end{itemize}
+\end{frame}
+
+
+
+\subsection{Thesis Contribution}
+\begin{frame}
+    \frametitle{Outline}
+    \tableofcontents[subsectionstyle=show/shaded/hide,sectionstyle=show/shaded]
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    \begin{minipage}{0.3\textwidth}
+        Latency constraint $D(s)$:
+        \begin{equation}
+            \only<1>{d_{\text{net}}(\psi) + d_{\text{net}} \le D(s)}
+            \only<2>{\highlight{d_{\text{net}}(\psi)}{propagation delay} + d_{\text{proc}} \le D(s)}
+            \only<3>{d_{\text{net}}(\psi) + \highlight{d_{\text{proc}}(\psi)}{processing delay} \le D(s)}
+        \end{equation}
+    \end{minipage}
+    \begin{minipage}{0.67\textwidth}
+        \begin{figure}
+            \centering
+            \only<1>{\includegraphics[width=.9\textwidth]{img/fresco_var_thesis_scenario_delay.pdf}}%
+            \only<2>{\includegraphics[width=.9\textwidth]{img/fresco_var_thesis_scenario_propagation_delay.pdf}}%
+            \only<3>{\includegraphics[width=.9\textwidth]{img/fresco_var_thesis_scenario_processing_delay.pdf}}%
+            \caption{Service $s$ delay.}
+        \end{figure}
+    \end{minipage}
+\end{frame}
+
+
+
+
+
+\subsection{Output}
+\begin{frame}
+    \frametitle{Outline}
+    \tableofcontents[subsectionstyle=show/shaded/hide,sectionstyle=show/shaded]
+\end{frame}
+
+
+
+
+
 
 
 
@@ -808,6 +991,98 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     with $\lVert \cdot \rVert_1$ denoting the Manhattan distance.
 \end{frame}
 
+
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{Pricing details}
+
+    \textbf{User pays} $p^{(t)}$ for the service $\sigma$
+    \begin{equation}
+        \mbox{$p^{(t)}(\sigma)=(1+P)l^{(t)}(\sigma)$}
+        \label{eq:service-fee}
+    \end{equation}
+    with $P$ the profit margin, and $l^{(t)}$ the local deployment cost (based on uncertain phenomena).\pause 
+
+    \vfill
+
+    Given the federation fee $f(\sigma)$ the \textbf{reward} is:
+    \begin{equation}
+        r^{(t)}(X_t) := \!\!\!\!\!\!\!\!\!\!\sum_{\substack{\sigma:~ x(\sigma)=0\\a(\sigma) \le t\le d(\sigma)}} \!\!\!\!\!\!\!\! p^{a(\sigma)}(\sigma) +\!\!\!\!\!\!\!\!\!\! \sum_{\substack{\sigma:~ x(\sigma)=1\\ a(\sigma) \le t\le d(\sigma)}} \!\!\!\!\!\!\!\!\left[ p^{a(\sigma)}(\sigma) - f^{(t)}(\sigma) \right]
+        \label{eq:instant-reward}
+    \end{equation}
+    where $X_t:=\{ x(\sigma) \}_{\sigma: a(\sigma)\le t}$.
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{Arrival of users~\cite{xavierPricing}}
+
+    \begin{minipage}{.6\textwidth}
+        \begin{equation}
+            f(p^{(t)}(\sigma)) \!:=\! \begin{cases}
+                k\left( 1 - \left( \frac{p^{(t)}(\sigma)}{K\cdot M}\right)^a \right)^b\!\!\!, & p^{(t)}(\sigma) \le K\cdot M\\
+                0, & p^{(t)}(\sigma) > K\cdot M
+            \end{cases}
+            \label{eq:arrival}
+        \end{equation}
+        where $M=\max_{\sigma,t} \{l^{(t)}(\sigma)\}$ is the maximum local deployment cost over time across all services $\sigma$ (e.g., \textit{t3a.small}), and $K$ is a normalization constant to control the decay of the arrival rate.
+    \end{minipage}
+    \hfill
+    \begin{minipage}{.26\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{img/rho-arrivals}
+            \caption{Impact of prices on arriving users.}
+            \label{fig:arrivals}
+        \end{figure}
+    \end{minipage}
+\end{frame}
+
+
+
+begin{frame}
+   \frametitle{\secname}
+   \framesubtitle{Impact of marginal benefit $P$}
+
+   \begin{minipage}{.25\textwidth}
+       Increase of $P$ leads to:
+       \begin{itemize}
+           \item less user arrivals
+           \item larger reward
+       \end{itemize}
+   \end{minipage}
+   \hfill
+   \begin{minipage}{.7\textwidth}
+       \begin{figure}
+           \centering
+           \includegraphics[width=\textwidth]{img/margin-benefits.eps}
+           \caption{Impact of the marginal benefit $P$ in the
+           commutative reward achieved by each solution.}
+           \label{fig:margin-benefits}
+       \end{figure}
+   \end{minipage}
+end{frame}
 
 
 
