@@ -200,23 +200,28 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
     \begin{minipage}{.35\textwidth}
         \begin{itemize}
-            \item $f_i(x)$ -- revolution func.
-            \item $G(x)$ -- gentrification
             \item $R$ -- region of interest
             \item $C_i$ -- area
+            \onslide<2->{\item $f_i(x)$ -- revolution func.}
+            \onslide<3->{\item $G(x)$ -- gentrification \\ \begin{itemize} \item $G(x)=\sum_i f_i(x)$\end{itemize}}
         \end{itemize}
     \end{minipage}
     \begin{minipage}{.64\textwidth}
         \begin{figure}
             \centering
             \begin{tikzpicture}
-                \node[inner sep=0pt] (russell) at (0,0) {\includegraphics[width=\textwidth]{img/revolution-function}};
-                \node at (-2.2,1) {$f_1$};
-                \node at (.9,1.2) {$f_2$};
+                \node[inner sep=0pt] (russell) at (0,0) {
+                    \only<1>{\includegraphics[width=\textwidth]{img/revolution-function-areas.pdf}}%
+                    \only<2>{\includegraphics[width=\textwidth]{img/revolution-function-fs.pdf}}%
+                    \only<3>{\includegraphics[width=\textwidth]{img/revolution-function.pdf}}
+                };
+                % \node[inner sep=0pt] (russell) at (0,0) {\includegraphics[width=\textwidth]{img/revolution-function}};
                 \node at (-2.6,-1.5) {$C_1$};
                 \node at (-.4,-1.6) {$C_2$};
-                \node at (3.6, 1.2) {$G(x)$};
                 \node at (-4,-1.65) {$R$};
+                \onslide<2->{\node at (-2.2,1) {$f_1$};}
+                \onslide<2->{\node at (.9,1.2) {$f_2$};}
+                \onslide<3->{\node at (3.6, 1.2) {$G(x)$};}
             \end{tikzpicture}
             \caption{\emph{Revolution functions} of a region with two building areas.}
             \label{fig:rev}
@@ -233,14 +238,21 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \frametitle{\secname}
     \framesubtitle{\subsecname}
 
-    BS intensity function $\lambda(x)\sim G(x)$ proportional to gentrification.
+    \onslide<1-2>{\!\!}
+    \onslide<3->{BS intensity function $\lambda(x)\sim G(x)$ proportional to gentrification.}
 
     \vfill
 
     \begin{figure}
         \centering
-        \input{grid.tex}
-        \caption{Gridded region (left), and inhomogeneous Mattérn~II process of BSs (right).}
+        \only<1>{\includegraphics[width=.8\textwidth]{img/grid-left.pdf}}%
+        \only<2>{\includegraphics[width=.8\textwidth]{img/grid-zoom.pdf}}%
+        \only<3>{\includegraphics[width=.8\textwidth]{img/grid-points.pdf}}%
+        \only<4>{\includegraphics[width=.8\textwidth]{img/grid-radius.pdf}}%
+        \only<5>{\includegraphics[width=.8\textwidth]{img/grid-final-antennas.pdf}}
+        %% \input{grid.tex}
+        \caption{Gridded region
+            \onslide<2->{(left), and inhomogeneous Mattérn~II process of BSs (right).}}
         \label{fig:grid-aau-gen}
     \end{figure}
 \end{frame}
@@ -277,10 +289,11 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \framesubtitle{\subsecname}
 
     \begin{minipage}{.48\textwidth}
+        \only<2>{\color{gray}}
+        Inhomogeneous Mattérn~II PPs applied on:
         \begin{itemize}
-            \item $G(x)$: Madrid census
-            \item $R$: Madrid city
-            \item Inhomogeneous Mattern~II PPs
+            \item \only<2>{\color{gray}} $R$: Madrid city
+            \item \only<2>{\color{gray}} $G(x)$: Madrid census
         \end{itemize}
     \end{minipage}
     \begin{minipage}{.5\textwidth}
@@ -304,7 +317,9 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
     \begin{figure}
         \centering
-        \includegraphics[width=1.0\textwidth]{img/infrastructure.pdf}
+        \only<1>{\includegraphics[width=1.0\textwidth]{img/infrastructure.pdf}}%
+        \only<2>{\includegraphics[width=1.0\textwidth]{img/infrastructure-mec-pop-m1.pdf}}%
+        \only<3>{\includegraphics[width=1.0\textwidth]{img/infrastructure-mec-pop-m2.pdf}}%
         \caption{Reference network infrastructure as illustrated\footnote{Author: Dr. Luca Cominardi.} in~\cite{8436847} and based on~\cite{itu.t.ref.arch}. }
         \label{fig:infrastructure}
     \end{figure}
@@ -332,7 +347,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
     \begin{itemize}
         \item $d$: distance between BS and MEC PoP
-        \item $M$: network ring
+        \item $M$: network ring (M1,M2,M3,M4)
         \item $UL$: Uplink propagation latency
         \item $DL$: Downlink propagation latency
     \end{itemize}
@@ -438,8 +453,8 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \end{itemize}
     Open-source:
     \begin{itemize}
-        \item \url{github.com/MartinPJorge/mec-generator}
-        \item \href{https://github.com/MartinPJorge/mec-generator/tree/5g-infra-gen}{5GEN R package}
+        \item \textbf{BS \& MEC PoP generation}: \url{github.com/MartinPJorge/mec-generator}
+        \item \textbf{5GEN}: \href{https://github.com/MartinPJorge/mec-generator/tree/5g-infra-gen}{5GEN R package}
     \end{itemize}
     
 
@@ -801,9 +816,9 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \framesubtitle{\subsecname}
     Open-source:
     \begin{itemize}
-        \item \url{https://github.com/MartinPJorge/placement}
-        \item \url{https://github.com/MartinPJorge/5gt-federation}
-        \item \url{https://github.com/MartinPJorge/5gt-federation/tree/extensionICC/utils/aws}
+        \item \textbf{DFS, BFS w/ cutoffs}: \url{https://github.com/MartinPJorge/placement}
+        \item \textbf{Q-table}: \url{https://github.com/MartinPJorge/5gt-federation}
+        \item \textbf{DQN \& environment}: \url{https://github.com/MartinPJorge/5gt-federation/tree/extensionICC/utils/aws}
     \end{itemize}
 \end{frame}
 
@@ -873,15 +888,17 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \frametitle{\secname}
     \framesubtitle{\subsecname}
 
-    \begin{minipage}{0.3\textwidth}
-        Latency constraint $D(s)$:
+    \begin{minipage}{0.37\textwidth}
+        \textbf{Latency} constraint $D(s)$:
         \begin{equation}
-            \only<1>{d_{\text{net}}(\psi) + d_{\text{net}} \le D(s)}
+            \only<1>{d_{\text{net}}(\psi) + d_{\text{proc}} \le D(s)}
             \only<2>{\highlight{d_{\text{net}}(\psi)}{propagation delay} + d_{\text{proc}} \le D(s)}
             \only<3>{d_{\text{net}}(\psi) + \highlight{d_{\text{proc}}(\psi)}{processing delay} \le D(s)}
+            \label{eq:delay-constraint}
         \end{equation}
+        \only<3>{$d_{\text{proc}}$: VNF as M/M/1-PS queue}
     \end{minipage}
-    \begin{minipage}{0.67\textwidth}
+    \begin{minipage}{0.6\textwidth}
         \begin{figure}
             \centering
             \only<1>{\includegraphics[width=.9\textwidth]{img/fresco_var_thesis_scenario_delay.pdf}}%
@@ -891,6 +908,138 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         \end{figure}
     \end{minipage}
 \end{frame}
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    \begin{minipage}{0.5\textwidth}
+        \textbf{Radio technology} $i$ constraint:
+        \begin{equation}
+            \rho(v , c)r_i (v) \le R_i (c)
+            \label{eq:okpi-radio-constraint}
+        \end{equation}
+        \begin{itemize}
+            \item $\rho(v,c)$: VNF $v$ is deployed in $c$ 
+            \item $R_i (c)$: radio point of access c has radio technology $i$
+            \item $r_i (v)$: VNF v needs radio technology $i$
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=.9\textwidth]{img/okpi-radio.pdf}
+            \caption{Radio VNF.}
+        \end{figure}
+    \end{minipage}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    \begin{minipage}{0.43\textwidth}
+        \textbf{Geographical availability}:
+        \begin{multline}
+            \forall\psi = (\alpha, s), \exists c, v_1 , v_2:\\
+            \tau_{\psi,c} (e, v_1 , v_2 ) > 0
+            \label{eq:okpi-geo-constraint}
+        \end{multline}
+        \begin{itemize}
+            \item location $\alpha$
+            \item $\tau_{e,c} (e, v_1 , v_2 )$: flow $(\psi, v_1 , v_2 )$ traverses link $(\psi, c)$
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{0.55\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=.8\textwidth]{img/geographical.pdf}
+            \caption{coverage of region $\alpha$.}
+        \end{figure}
+    \end{minipage}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    \begin{minipage}{0.43\textwidth}
+        Service \textbf{reliability} $H(s)$:
+            \begin{multline}
+                \only<1>{\prod_{\substack{ v_1,v_2\in\mathcal{V} \\ (i,j)\in w}}\eta(j,t)\eta(i,j,t)\geq H(s)}%
+                \only<2>{\prod_{v_1,v_2\in\mathcal{V}}\sum_{w\in\mathcal{W}}\highlight{f(\psi,v_1,v_2,w)}{traffic fraction}\\\prod_{(i,j)\in w}\eta(j,t)\eta(i,j,t)\geq H(s)}
+                \label{eq:okpi-reliab-constraint}
+            \end{multline}
+        \begin{itemize}
+            \item $\eta(j,t)$: node reliability at $t$
+            \item $\eta(i,j,t)$: node reliability at $t$
+            \only<2>{\item $w$: traffic path}
+        \end{itemize}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.50\textwidth}
+        \begin{figure}
+            \centering
+            \only<1>{\includegraphics[width=.8\textwidth]{img/reliability-together.pdf}}%
+            \only<2>{\includegraphics[width=.8\textwidth]{img/reliability-fraction.pdf}}%
+            %\only<2>{\includegraphics[width=.8\textwidth]{img/reliability.pdf}}%
+            \caption{
+                \only<1>{Traffic path.}%
+                \only<2>{Fractioned traffic path.}
+            }
+        \end{figure}
+    \end{minipage}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    Formulate an optimization problem:
+    \begin{align}
+        \label{eq:obj}
+        \min &
+        \only<1>{\sum_c\sum_{v} \left [ c_c(v)+\sum_{e}\sum_{\kappa}c_c(\kappa)a_c(\psi,v,\kappa) \right ]  +\sum_{(i,j)} \sum_{e} \sum_{v_1,v_2}c_{i,j}\tau_{i,j}(\psi,v_1,v_2)}%
+        \only<2>{\sum_c\sum_{v} \Bigg[  \highlight{c_c(v)}{VNF cost}   +\sum_{e}\sum_{\kappa}c_c(\kappa)a_c(\psi,v,\kappa) \Bigg]  +\sum_{(i,j)} \sum_{e} \sum_{v_1,v_2}c_{i,j}\tau_{i,j}(\psi,v_1,v_2)}%
+        \only<3>{\sum_c\sum_{v} \Bigg[  c_c(v)   +\sum_{e}\sum_{\kappa} \highlight{c_c(\kappa)a_c(\psi,v,\kappa)}{assigned resource $\kappa$ cost} \Bigg]  +\sum_{(i,j)} \sum_{e} \sum_{v_1,v_2}c_{i,j}\tau_{i,j}(\psi,v_1,v_2)}%
+        \only<4>{\sum_c\sum_{v} \left [ c_c(v)+\sum_{e}\sum_{\kappa}c_c(\kappa)a_c(\psi,v,\kappa) \right ]  +\sum_{(i,j)} \sum_{e} \sum_{v_1,v_2}\highlight{c_{i,j}\tau_{i,j}(\psi,v_1,v_2)}{traffic steering cost}} %
+        \only<5>{\sum_c\sum_{v} \left [ c_c(v)+\sum_{e}\sum_{\kappa}c_c(\kappa)a_c(\psi,v,\kappa) \right ]  +\sum_{(i,j)} \sum_{e} \sum_{v_1,v_2}c_{i,j}\tau_{i,j}(\psi,v_1,v_2)} \\
+        s.t. & \eqref{eq:delay-constraint}-\eqref{eq:okpi-reliab-constraint}
+    \end{align}
+    \only<5>{NP-hard: bin-packing problem equivalence.}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    The \textbf{OKpi} (all KPI) solution:
+    \begin{enumerate}
+        \item Create a decision graph 
+        \item 
+    \end{enumerate}
+
+
+\end{frame}
+
 
 
 
@@ -903,6 +1052,18 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 \end{frame}
 
 
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+    Open-source:
+    \begin{itemize}
+        \item \textbf{AMPLPY}: \url{https://github.com/ampl/amplpy}
+        \item \textbf{networkx}: \url{https://github.com/networkx/networkx}
+        \item \textbf{OKpi}: \url{https://github.com/MartinPJorge/placement}
+        \item \textbf{FMC}: \url{https://github.com/MartinPJorge/placement}
+    \end{itemize}
+\end{frame}
 
 
 
@@ -1061,7 +1222,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 
 
-begin{frame}
+\begin{frame}
    \frametitle{\secname}
    \framesubtitle{Impact of marginal benefit $P$}
 
@@ -1082,7 +1243,7 @@ begin{frame}
            \label{fig:margin-benefits}
        \end{figure}
    \end{minipage}
-end{frame}
+\end{frame}
 
 
 
