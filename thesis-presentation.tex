@@ -1132,7 +1132,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
             \only<4>{\includegraphics[width=.8\textwidth]{img/expanded-feasible-connections.pdf}}%
             \only<5>{\includegraphics[width=.8\textwidth]{img/expanded-solution-1.pdf}}%
             \only<6>{\includegraphics[width=.8\textwidth]{img/expanded-solution-2.pdf}}%
-            \caption{OKpi expanded graph.}
+            \caption{OKpi expanded graph $\gamma=3$.}
         \end{figure}
     \end{minipage}
 \end{frame}
@@ -1715,6 +1715,178 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 
 
+%%%%%    %% COUNTER FOR CURRENT FRAME & FIGURE
+%%%%%    \newcounter{currframe}
+%%%%%    \setcounter{currframe}{\value{framenumber}}
+%%%%%    \newcounter{currfig}
+%%%%%    \setcounter{currfig}{\value{figure}}
+%%%%%    
+%%%%%    
+%%%%%    \begin{frame}
+%%%%%        \frametitle{\secname}
+%%%%%        \framesubtitle{\subsecname}
+%%%%%    
+%%%%%    
+%%%%%        \begin{figure}
+%%%%%            \subfigure[][Remote driving savings]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-remote-driving-cost.pdf}%
+%%%%%                \label{fig:cost-remote}%
+%%%%%            }%
+%%%%%            \subfigure[][Coop. aware. savings]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-cost.pdf}%
+%%%%%                \label{fig:cost-cooperative}%
+%%%%%            }%
+%%%%%            \subfigure[][Hazard warn. savings]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-cost.pdf}%
+%%%%%                \label{fig:cost-hazard}%
+%%%%%            }\\%
+%%%%%            \subfigure[][Remote driving delay violate]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-remote-driving-delay-violations.pdf}%
+%%%%%                \label{fig:delay-remote}%
+%%%%%            }%
+%%%%%            \subfigure[][Coop. aware. delay violate]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-delay-violations.pdf}%
+%%%%%                \label{fig:delay-cooperative}%
+%%%%%            }%
+%%%%%            \subfigure[][Hazard warn. violate]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-delay-violations.pdf}%
+%%%%%                \label{fig:delay-hazard}%
+%%%%%            }%
+%%%%%    
+%%%%%            \caption[]{
+%%%%%                Cost savings and delay violations due to scaling --
+%%%%%                TES with online training was used.
+%%%%%            }%
+%%%%%        \end{figure}
+%%%%%    \end{frame}
+%%%%%    \setcounter{framenumber}{\value{currframe}}
+%%%%%    \setcounter{figure}{\value{currfig}}
+%%%%%    
+%%%%%    
+%%%%%    %% 2
+%%%%%    \begin{frame}
+%%%%%        \frametitle{\secname}
+%%%%%        \framesubtitle{\subsecname}
+%%%%%    
+%%%%%    
+%%%%%        \begin{figure}
+%%%%%            \subfigure[][Remote driving savings]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-remote-driving-cost-highlight.pdf}%
+%%%%%                \label{fig:cost-remote}%
+%%%%%            }%
+%%%%%            \subfigure[][Coop. aware. savings]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-cost.pdf}%
+%%%%%                \label{fig:cost-cooperative}%
+%%%%%            }%
+%%%%%            \subfigure[][Hazard warn. savings]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-cost.pdf}%
+%%%%%                \label{fig:cost-hazard}%
+%%%%%            }\\
+%%%%%            \subfigure[][Remote driving delay violate]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-remote-driving-delay-violations-highlight.pdf}%
+%%%%%                \label{fig:delay-remote}%
+%%%%%            }%
+%%%%%            \subfigure[][Coop. aware. delay violate]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-delay-violations.pdf}%
+%%%%%                \label{fig:delay-cooperative}%
+%%%%%            }%
+%%%%%            \subfigure[][Hazard warn. violate]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-delay-violations.pdf}%
+%%%%%                \label{fig:delay-hazard}%
+%%%%%            }%
+%%%%%    
+%%%%%            \caption[]{
+%%%%%                Cost savings and delay violations due to scaling --
+%%%%%                TES with online training was used.
+%%%%%            }%
+%%%%%        \end{figure}
+%%%%%    \end{frame}
+%%%%%    \setcounter{framenumber}{\value{currframe}}
+%%%%%    \setcounter{figure}{\value{currfig}}
+%%%%%    
+%%%%%    
+%%%%%    %% 3
+%%%%%    \begin{frame}
+%%%%%        \frametitle{\secname}
+%%%%%        \framesubtitle{\subsecname}
+%%%%%    
+%%%%%    
+%%%%%        \begin{figure}
+%%%%%            \subfigure[][Remote driving savings]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-remote-driving-cost.pdf}%
+%%%%%                \label{fig:cost-remote}%
+%%%%%            }%
+%%%%%            \subfigure[][Coop. aware. savings]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-cost-highlight.pdf}%
+%%%%%                \label{fig:cost-cooperative}%
+%%%%%            }%
+%%%%%            \subfigure[][Hazard warn. savings]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-cost.pdf}%
+%%%%%                \label{fig:cost-hazard}%
+%%%%%            }\\%
+%%%%%            \subfigure[][Remote driving delay violate]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-remote-driving-delay-violations.pdf}%
+%%%%%                \label{fig:delay-remote}%
+%%%%%            }%
+%%%%%            \subfigure[][Coop. aware. delay violate]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-delay-violations-highlight.pdf}%
+%%%%%                \label{fig:delay-cooperative}%
+%%%%%            }%
+%%%%%            \subfigure[][Hazard warn. violate]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-delay-violations.pdf}%
+%%%%%                \label{fig:delay-hazard}%
+%%%%%            }%
+%%%%%    
+%%%%%            \caption[]{
+%%%%%                Cost savings and delay violations due to scaling --
+%%%%%                TES with online training was used.
+%%%%%            }%
+%%%%%        \end{figure}
+%%%%%    \end{frame}
+%%%%%    \setcounter{framenumber}{\value{currframe}}
+%%%%%    \setcounter{figure}{\value{currfig}}
+%%%%%    
+%%%%%    
+%%%%%    %% 4
+%%%%%    \begin{frame}
+%%%%%        \frametitle{\secname}
+%%%%%        \framesubtitle{\subsecname}
+%%%%%    
+%%%%%    
+%%%%%        \begin{figure}
+%%%%%            \subfigure[][Remote driving savings]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-remote-driving-cost.pdf}%
+%%%%%                \label{fig:cost-remote}%
+%%%%%            }%
+%%%%%            \subfigure[][Coop. aware. savings]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-cost.pdf}%
+%%%%%                \label{fig:cost-cooperative}%
+%%%%%            }%
+%%%%%            \subfigure[][Hazard warn. savings]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-cost-highlight.pdf}%
+%%%%%                \label{fig:cost-hazard}%
+%%%%%            }\\%
+%%%%%            \subfigure[][Remote driving delay violate]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-remote-driving-delay-violations.pdf}%
+%%%%%                \label{fig:delay-remote}%
+%%%%%            }%
+%%%%%            \subfigure[][Coop. aware. delay violate]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-delay-violations.pdf}%
+%%%%%                \label{fig:delay-cooperative}%
+%%%%%            }%
+%%%%%            \subfigure[][Hazard warn. violate]{%
+%%%%%                \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-delay-violations-highlight.pdf}%
+%%%%%                \label{fig:delay-hazard}%
+%%%%%            }%
+%%%%%    
+%%%%%            \caption[]{
+%%%%%                Cost savings and delay violations due to scaling --
+%%%%%                TES with online training was used.
+%%%%%            }%
+%%%%%        \end{figure}
+%%%%%    \end{frame}
+
+
 
 
 
@@ -1753,24 +1925,24 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 \begin{frame}
     \frametitle{\secname}
-    \framesubtitle{Conclusions}:
+    \framesubtitle{Conclusions}
     \begin{enumerate}
         \item methodology to \textbf{generate BS \& MEC PoP} locations\pause
-        \item \textbf{DQN} agent to \textbf{federate} services\pause
-        \item \textbf{OKpi} solves VNE problem: delay, reliability, availability\pause
-        \item reduce delay violations with \textbf{V2N scaling} using real traffic \textbf{dataset}
+        \item \textbf{DQN} agent to \textbf{federate} services under \textbf{dynamic prices}\pause
+        \item \textbf{OKpi} solves VNE problem \& meets: delay, reliability, availability\pause
+        \item \textbf{V2N scaling} w/ \textbf{TES} reduces delay violations using \textbf{online training}
     \end{enumerate}
 \end{frame}
 
 
 \begin{frame}
     \frametitle{\secname}
-    \framesubtitle{Future work}:
+    \framesubtitle{Future work}
     \begin{enumerate}
-        \item \textbf{generate multi-domain} infrastructure graphs\pause
+        \item \textbf{generate federated} scenarios BSs, PoPs \& datacenters, all at once\pause
         \item \textbf{DQN} agent +\textbf{LSTM} layer to \textbf{predict}\pause
         \item \textbf{OKpi} study on $\gamma$/runtime/optimality \pause
-        \item \textbf{V2N scaling} to meet \textbf{99.9999\%} latency quantile \& ST-GCN
+        \item \textbf{V2N scaling} to meet \textbf{99.9999\%} latency quantile \& use \textbf{ST-GCN}
     \end{enumerate}
 \end{frame}
 
