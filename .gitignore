@@ -18,6 +18,9 @@
 !thesis-presentation.pdf
 *.svg
 
+!img/*
+img/*-converted-to*
+
 
 *.bbl
 *.bcf

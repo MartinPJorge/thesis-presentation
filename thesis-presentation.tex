@@ -86,14 +86,61 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 }
 
 \usetheme{uc3m}
+% Don't show [2/17], rather show [2]
+\setbeamertemplate{footline}{%
+\raisebox{5pt}{\makebox[\paperwidth]{\hfill\makebox[10pt]{\scriptsize\insertframenumber\hspace{1em}}}}}
 
 \begin{document}
 
-\begin{frame}
+\begin{frame}[plain]
 \titlepage
 \end{frame}
 
 \setcounter{framenumber}{0}
+
+
+% MOTIVATION WITH POINTS ON SIDE
+%%% \begin{frame}
+%%%     \frametitle{Motivation}
+%%% 
+%%%     \begin{minipage}{.5\textwidth}
+%%%         \only<6>{\color{gray}}
+%%%         To assess NFV orchestration in Edge \& Fog:\pause
+%%%         \begin{enumerate}
+%%%             \item\only<6>{\color{gray}} graphs to represent 5G infra. \pause
+%%%             \item\only<6>{\color{gray}} service @local or @federated infra. \pause
+%%%             \item\only<6>{\color{gray}} embed service in the infra. \pause
+%%%             \item\only<6>{\color{gray}} scale the embedded service \pause
+%%%         \end{enumerate}
+%%%     \end{minipage}
+%%%     \only<6>{
+%%%         \begin{minipage}{.45\textwidth}
+%%%             \begin{enumerate}
+%%%                 \item Generation of 5G infrastructure graphs
+%%%                 \item NFV orchestration in federated environments
+%%%                 \item NFV orchestration in 5G networks: OKpi
+%%%                 \item Scaling of V2N services: a study case
+%%%             \end{enumerate}
+%%%         \end{minipage}
+%%%     }
+%%% \end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Motivation}
+
+    To assess NFV orchestration in Edge \& Fog\only<6>{\footnote{The presentation focuses on the main thesis contributions.}}:\pause
+    \begin{enumerate}
+        \item graphs to represent 5G infrastructure \pause
+        \item service @local or @federated infrastructure \pause
+        \item embed service in the infrastructure \pause
+        \item scale the embedded service \pause
+    \end{enumerate}
+\end{frame}
+
+
+
 
 
 \begin{frame}
@@ -338,9 +385,10 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 
     \begin{equation}
-        \only<1>{RTT = \highlight{2d\cdot5\frac{\mu s}{km}}{fiber propagation} + 2M\cdot 50\mu s + UL + DL}
-        \only<2>{RTT = 2d\cdot5\frac{\mu s}{km} + \highlight{2M\cdot 50\mu s}{ring propagation} + UL + DL}
-        \only<3>{RTT = 2d\cdot5\frac{\mu s}{km} + 2M\cdot 50\mu s + \highlight{UL + DL}{radio propagation}}
+        \only<1>{RTT = 2d\cdot5\frac{\mu s}{km} + 2M\cdot 50\mu s + UL + DL}
+        \only<2>{RTT = \highlight{2d\cdot5\frac{\mu s}{km}}{fiber propagation} + 2M\cdot 50\mu s + UL + DL}
+        \only<3>{RTT = 2d\cdot5\frac{\mu s}{km} + \highlight{2M\cdot 50\mu s}{ring propagation} + UL + DL}
+        \only<4>{RTT = 2d\cdot5\frac{\mu s}{km} + 2M\cdot 50\mu s + \highlight{UL + DL}{radio propagation}}
         \label{eq:rtt-bad}
     \end{equation}
 
@@ -348,7 +396,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
     \begin{itemize}
         \item $d$: distance between BS and MEC PoP
-        \item $M$: network ring (M1,M2,M3,M4)
+        \item $M$: \#traversed rings (e.g., $1,2,\ldots$)
         \item $UL$: Uplink propagation latency
         \item $DL$: Downlink propagation latency
     \end{itemize}
@@ -389,9 +437,9 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 \begin{figure}
     \centering
     % \comment{!!! @Jorge: this is still here!!! We need to improve the figures captions. It's hard to understand what the figures show only by looking at the pictures. It is not explained in the what $C_{A,M2}$ means. !!!}
-    \subfigure[FDD 120 kHz 7s]{ \includegraphics[clip, trim=0cm 2.7cm 0.25cm 3cm, width=0.35\textwidth]{img/madrid-ii-m2}}
+    \subfigure[FDD 120 kHz 7s]{ \includegraphics[clip, trim=0cm 2.7cm 0.25cm 3cm, width=0.35\textwidth]{img/madrid-ii-m2.png}}
         ~
-    \subfigure[TDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 2.7cm 0.25cm 3cm, width=0.35\textwidth]{img/madrid-i-iii-m2}}\\
+    \subfigure[TDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 2.7cm 0.25cm 3cm, width=0.35\textwidth]{img/madrid-i-iii-m2.png}}\\
     \caption{\textbf{Urban scenario} (Madrid city center) -- $C_{A,M2}=$covered BSs}
     \label{fig:madrid}
 \end{figure}
@@ -409,9 +457,9 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 \begin{figure}
     \centering
-    \subfigure[FDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 8.5cm 0.25cm 6.7cm, width=0.485\textwidth]{img/hoces-del-cabriel-ii-m1}}
+    \subfigure[FDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 8.5cm 0.25cm 6.7cm, width=0.485\textwidth]{img/hoces-del-cabriel-ii-m1.png}}
      ~                       
-    \subfigure[TDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 8.5cm 0.25cm 6.7cm, width=0.485\textwidth]{img/hoces-del-cabriel-i-iii-m1}}\\
+    \subfigure[TDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 8.5cm 0.25cm 6.7cm, width=0.485\textwidth]{img/hoces-del-cabriel-i-iii-m1.png}}\\
     \caption{\textbf{Highway scenario} (Hoces del Cabriel A3) -- $C_{A,M1}=$covered BSs by M1 MEC PoP}
     \label{fig:madrid}
 \end{figure}
@@ -454,8 +502,8 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \end{itemize}
     Open-source:
     \begin{itemize}
-        \item \textbf{BS \& MEC PoP generation}: \url{github.com/MartinPJorge/mec-generator}
-        \item \textbf{5GEN}: \href{https://github.com/MartinPJorge/mec-generator/tree/5g-infra-gen}{5GEN R package}
+        \item \textbf{BS \& MEC PoP generation}: \url{github.com/MartinPJorge/mec-generator/}
+        \item \textbf{5GEN}: \url{https://github.com/MartinPJorge/mec-generator/tree/5g-infra-gen/}
     \end{itemize}
     
 
@@ -517,7 +565,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \begin{itemize}
         \item \textbf{\color{red}real-price traces AWS}\pause
         \item \textbf{\color{red}Deep Q-learning}\pause
-        \item \textbf{\color{red}TID scenario}
+        \item \textbf{\color{red}Telefónica scenario}
     \end{itemize}
 \end{frame}
 
@@ -722,7 +770,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
     \textbf{Experimentation}:
     \begin{itemize}
-        \item TID infrastructure \& resources~\cite{tid}\pause
+        \item Telefónica infrastructure \& resources~\cite{tid}\pause
         \item AWS prices dataset:
             \begin{itemize}
                 \item training 29/02/2020 -- 02/05/2020
@@ -817,9 +865,9 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \framesubtitle{\subsecname}
     Open-source:
     \begin{itemize}
-        \item \textbf{DFS, BFS w/ cutoffs}: \url{https://github.com/MartinPJorge/placement}
-        \item \textbf{Q-table}: \url{https://github.com/MartinPJorge/5gt-federation}
-        \item \textbf{DQN \& environment}: \url{https://github.com/MartinPJorge/5gt-federation/tree/extensionICC/utils/aws}
+        \item \textbf{DFS, BFS w/ cutoffs}: \url{https://github.com/MartinPJorge/placement/}
+        \item \textbf{Q-table}: \url{https://github.com/MartinPJorge/5gt-federation/}
+        \item \textbf{DQN \& environment}: \url{https://github.com/MartinPJorge/5gt-federation/tree/extensionICC/utils/aws/}
     \end{itemize}
 \end{frame}
 
@@ -1121,7 +1169,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
                         \item $r_1+\gamma\cdot r(\tilde{n}_1,\tilde{n}_2)\le r_2$
                     \end{itemize}
                 }
-            \onslide<5->{\item one jump per VNF}
+            \onslide<5->{\item one hop per VNF}
         \end{enumerate}
     \end{minipage}
     \begin{minipage}{.6\textwidth}
@@ -1203,10 +1251,10 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \framesubtitle{\subsecname}
     Open-source:
     \begin{itemize}
-        \item \textbf{AMPLPY}: \url{https://github.com/ampl/amplpy}
-        \item \textbf{networkx}: \url{https://github.com/networkx/networkx}
-        \item \textbf{OKpi}: \url{https://github.com/MartinPJorge/placement}
-        \item \textbf{FMC}: \url{https://github.com/MartinPJorge/placement}
+        \item \textbf{AMPLPY}: \url{https://github.com/ampl/amplpy/}
+        \item \textbf{networkx}: \url{https://github.com/networkx/networkx/}
+        \item \textbf{OKpi}: \url{https://github.com/MartinPJorge/placement/}
+        \item \textbf{FMC}: \url{https://github.com/MartinPJorge/placement/}
     \end{itemize}
 \end{frame}
 
@@ -1911,7 +1959,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     Open-source (to be released):
     \begin{itemize}
         \item \url{https://github.com/MartinPJorge/5growth-scaling/}
-        \item \url{https://github.com/MartinPJorge/5growth-forecasting}
+        \item \url{https://github.com/MartinPJorge/5growth-forecasting/}
     \end{itemize}
 \end{frame}
 
@@ -1923,16 +1971,36 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \tableofcontents[subsectionstyle=show/shaded/hide,sectionstyle=show/shaded]
 \end{frame}
 
+%%% OLD CONCLUSIONS
+%% \begin{frame}
+%%     \frametitle{\secname}
+%%     \framesubtitle{Conclusions}
+%%     \begin{enumerate}
+%%         \item methodology to \textbf{generate BS \& MEC PoP} locations\pause
+%%         \item \textbf{DQN} agent to \textbf{federate} services under \textbf{dynamic prices}\pause
+%%         \item \textbf{OKpi} solves VNE problem \& meets: delay, reliability, availability\pause
+%%         \item \textbf{V2N scaling} w/ \textbf{TES} reduces delay violations using \textbf{online training}
+%%     \end{enumerate}
+%% \end{frame}
+
+
+
+
 \begin{frame}
     \frametitle{\secname}
     \framesubtitle{Conclusions}
+    In the \textbf{NFV orchestration} process, this thesis contributes to:\pause
     \begin{enumerate}
-        \item methodology to \textbf{generate BS \& MEC PoP} locations\pause
-        \item \textbf{DQN} agent to \textbf{federate} services under \textbf{dynamic prices}\pause
-        \item \textbf{OKpi} solves VNE problem \& meets: delay, reliability, availability\pause
-        \item \textbf{V2N scaling} w/ \textbf{TES} reduces delay violations using \textbf{online training}
+        \item generate \textbf{5G graphs} meeting standard requirements\pause
+        \item maximize revenue under \textbf{federation} and dynamic pricing\pause
+        \item minimize \textbf{VNE} cost meeting: latency, reliability, and availability constraints\pause
+        \item reduce the E2E latency violations with the proposed \textbf{scaling}
     \end{enumerate}
 \end{frame}
+
+
+
+
 
 
 \begin{frame}
@@ -1945,6 +2013,40 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         \item \textbf{V2N scaling} to meet \textbf{99.9999\%} latency quantile \& use \textbf{ST-GCN}
     \end{enumerate}
 \end{frame}
+
+
+
+\section*{Thesis publications}
+\subsection*{Conferences}
+\begin{frame}[allowframebreaks]
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    \begin{itemize}
+        \item \fullcite{multi-domain-msc}
+        \item \fullcite{5gen}
+        \item \fullcite{okpi}
+        \item \fullcite{icc}
+        \item \fullcite{eucnc-v2n}
+    \end{itemize}
+\end{frame}
+
+
+\subsection*{Journals}
+\begin{frame}[allowframebreaks]
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+    \begin{itemize}
+        \item \fullcite{modelling-bs}
+        \item \fullcite{tmc}
+        \item \fullcite{dqn}
+        \item \fullcite{okpi-ton}
+    \end{itemize}
+\end{frame}
+
+
+
+
 
 
 \begin{frame}
@@ -1960,6 +2062,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 
 
+\section*{References}
 \begin{frame}[allowframebreaks]
         \frametitle{References}
         % \bibliographystyle{amsalpha}
@@ -1973,7 +2076,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 
 
-\section*{Details}
+\section*{Appendix}
 \begin{frame}
     \frametitle{\secname}
     \framesubtitle{Inhomogeneous Mattérn~II process}
