@@ -1497,7 +1497,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
             \item $\lambda(t+n)$: traffic prediction
             \only<2>{\item derive $c(t+n)$ s.t.:
                 \begin{equation}
-                    \frac{1}{\mu} + \frac{P_Q}{c(t+n)\mu+\lambda(t+n)}\le D(s)
+                    \frac{1}{\mu} + \frac{P_Q}{c(t+n)\mu-\lambda(t+n)}\le D(s)
                 \end{equation}
                 with $D(s)$ the target delay
             }
