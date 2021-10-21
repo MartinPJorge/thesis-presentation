@@ -125,17 +125,22 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 %%%     }
 %%% \end{frame}
 
+\begin{frame}
+    \frametitle{Motivation}
 
+    \textit{``Service orchestration is the process of designing, creating, delivering, and monitoring service offerings in an automated way.''} -- Ericsson
+
+\end{frame}
 
 \begin{frame}
     \frametitle{Motivation}
 
-    To assess NFV orchestration in Edge \& Fog\only<6>{\footnote{The presentation focuses on the main thesis contributions.}}:\pause
+    To assess orchestration \footnote{The presentation focuses on the main thesis contributions.}:
     \begin{enumerate}
-        \item graphs to represent 5G infrastructure \pause
-        \item service @local or @federated infrastructure \pause
-        \item embed service in the infrastructure \pause
-        \item scale the embedded service \pause
+        \item design 5G infrastructure
+        \item create service @local or @federated infrastructure
+        \item embed service in the infrastructure
+        \item monitor/scale the embedded service
     \end{enumerate}
 \end{frame}
 
@@ -165,7 +170,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \begin{figure}
         \centering
         \includegraphics[width=.8\textwidth]{img/pop-and-antennas-no-labels.pdf}
-        \caption{Illustration of BS and PoPs in Madrid }
+        \caption{Illustration of BS and PoPs in Madrid.}
         \label{fig:bs-pops-no-label}
     \end{figure}
 \end{frame}
@@ -217,7 +222,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         Derive:
         \begin{itemize}
             \item BS location
-            \item MEC PoP location
+            \item MEC PoP\footnote{Point of Presence (PoP) - servers} location
         \end{itemize}
         Meet:
         \begin{itemize}
@@ -229,7 +234,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         \begin{figure}
             \centering
             \includegraphics[width=\textwidth]{img/pop-and-antennas.pdf}
-            \caption{BS and MEC PoP locations}
+            \caption{BS and MEC PoP locations.}
             \label{fig:bs-pop-locations}
         \end{figure}
     \end{minipage}
@@ -287,7 +292,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \framesubtitle{\subsecname}
 
     \onslide<1-2>{\!\!}
-    \onslide<3->{BS intensity function $\lambda(x)\sim G(x)$ proportional to gentrification.}
+    \onslide<3->{$\lambda(x)\sim G(x)$ probability of BS at $x$.}
 
     \vfill
 
@@ -299,8 +304,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         \only<4>{\includegraphics[width=.8\textwidth]{img/grid-radius.pdf}}%
         \only<5>{\includegraphics[width=.8\textwidth]{img/grid-final-antennas.pdf}}
         %% \input{grid.tex}
-        \caption{Gridded region
-            \onslide<2->{(left), and inhomogeneous Mattérn~II process of BSs (right).}}
+        \caption{Inhomogeneous Mattérn~II process.}
         \label{fig:grid-aau-gen}
     \end{figure}
 \end{frame}
@@ -349,7 +353,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
             \centering
             \only<1>{\includegraphics[width=.9\textwidth]{img/madrid-map-antennas.png}}%
             \only<2>{\includegraphics[width=.9\textwidth]{img/where-pop.pdf}}
-            \caption{Location of BSs}
+            \caption{Location of BSs.}
             \label{fig:bs-location}
         \end{figure}
     \end{minipage}
@@ -419,7 +423,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         \centering
         \only<1>{\includegraphics[width=0.7\textwidth]{img/generation-algo-1.pdf}}%
         \only<2>{\includegraphics[width=0.7\textwidth]{img/generation-algo-2.pdf}}
-        \caption{How to select MEC PoP location}
+        \caption{How to select MEC PoP location.}
         \label{fig:algo-pop-location}
     \end{figure}
 \end{frame}
@@ -440,7 +444,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \subfigure[FDD 120 kHz 7s]{ \includegraphics[clip, trim=0cm 2.7cm 0.25cm 3cm, width=0.35\textwidth]{img/madrid-ii-m2.png}}
         ~
     \subfigure[TDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 2.7cm 0.25cm 3cm, width=0.35\textwidth]{img/madrid-i-iii-m2.png}}\\
-    \caption{\textbf{Urban scenario} (Madrid city center) -- $C_{A,M2}=$covered BSs}
+    \caption{\textbf{Urban scenario} (Madrid city center) -- $C_{A,M2}=$covered BSs.}
     \label{fig:madrid}
 \end{figure}
 
@@ -460,7 +464,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \subfigure[FDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 8.5cm 0.25cm 6.7cm, width=0.485\textwidth]{img/hoces-del-cabriel-ii-m1.png}}
      ~                       
     \subfigure[TDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 8.5cm 0.25cm 6.7cm, width=0.485\textwidth]{img/hoces-del-cabriel-i-iii-m1.png}}\\
-    \caption{\textbf{Highway scenario} (Hoces del Cabriel A3) -- $C_{A,M1}=$covered BSs by M1 MEC PoP}
+    \caption{\textbf{Highway scenario} (Hoces del Cabriel A3) -- $C_{A,M1}=$covered BSs by M1 MEC PoP.}
     \label{fig:madrid}
 \end{figure}
 
@@ -532,7 +536,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \begin{figure}
         \centering
         \includegraphics[width=\textwidth]{img/federation.pdf}
-        \caption{Service federation}
+        \caption{Service federation.}
         \label{fig:federation}
     \end{figure}
 
@@ -598,9 +602,12 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
     \begin{figure}
         \centering
-        \includegraphics[width=.7\textwidth]{img/federation-deploy.pdf}
+        \only<1>{\includegraphics[width=.7\textwidth]{img/federation-deploy.pdf}}%
+        \only<2>{\includegraphics[width=.7\textwidth]{img/federation-deploy-we-are.pdf}}%
+        \only<3>{\includegraphics[width=.7\textwidth]{img/federation-deploy-changes.pdf}}%
+        \only<4>{\includegraphics[width=.7\textwidth]{img/federation-deploy-they-change.pdf}}%
         \caption{Business model - federate deployment\footnote{Based on Kiril Antevski illustration}.}
-        \label{fig:local-deploy}
+        \label{fig:fed-deploy}
     \end{figure}
 \end{frame}
 
@@ -788,7 +795,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \frametitle{\secname}
     \framesubtitle{\subsecname}
 
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.27\textwidth}
         Comparison of:
         \begin{itemize}
             \item Optimal
@@ -797,21 +804,23 @@ line/.code={\tikzset{ul line/.append style={#1}}},
             \item Q-table explore
             \item greedy
         \end{itemize}
-        \only<2->{Results:
+        \only<3->{Results:
             \begin{itemize}
                 \item near-optimal
-                \only<3>{\item react upon peaks}
+                \only<5>{\item react upon peaks}
             \end{itemize}
         }
     \end{minipage}
-    \begin{minipage}{0.63\textwidth}
+    \begin{minipage}{0.65\textwidth}
     \begin{figure}
         \centering
         
         \only<1>{\includegraphics[width=\textwidth]{img/cdfs-all-decisions_edited_dqn.pdf}}%
-        \only<2>{\includegraphics[width=\textwidth]{img/cdfs-all-decisions_edited_dqn_near_optimal.pdf}}%
-        \only<3>{\includegraphics[width=\textwidth]{img/cdfs-all-decisions_edited_dqn_highlighter.pdf}}
-        \caption{federation agents' performance.}
+        \only<2>{\includegraphics[width=\textwidth]{img/cdfs-all-decisions_edited_dqn-zoom-cdf.pdf}}%
+        \only<3>{\includegraphics[width=\textwidth]{img/cdfs-all-decisions_edited_dqn-zoom-cdf-highlighter.pdf}}%
+        \only<4>{\includegraphics[width=\textwidth]{img/cdfs-all-decisions_edited_dqn-zoom-usage.pdf}}%
+        \only<5>{\includegraphics[width=\textwidth]{img/cdfs-all-decisions_edited_dqn-zoom-usage-highlighter.pdf}}%
+        \caption{Federation agents' performance.}
         \label{fig:cdf-dqn}
     \end{figure}
     \end{minipage}
@@ -829,7 +838,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         \centering
         \subfigure[Increasing local resources.]{\includegraphics[width=.45\columnwidth]{img/shrink-local.eps}}\hspace{1em}
         \subfigure[Increasing resources in federation.]{\includegraphics[width=.45\columnwidth]{img/shrink-federated.eps}}
-        \caption{Cumulative reward vs. available resources}
+        \caption{Cumulative reward vs. available resources.}
     \end{figure}
 \end{frame}
 
@@ -1212,7 +1221,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \begin{figure}[ht]
         \subfigure[]{ \includegraphics[width=.35\textwidth]{img/delay-increase.png}}\hspace{2em}
         \subfigure[]{ \includegraphics[width=.35\textwidth]{img/traffic-increase.png}}
-        \caption{(a) end-to-end delay, and (b) traffic impact on deployment cost of master-slave robotic VS}
+        \caption{(a) end-to-end delay, and (b) traffic impact on deployment cost of master-slave robotic VS.}
         \label{fig:increase-results}
     \end{figure}
 \end{frame}
@@ -1528,14 +1537,14 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \begin{figure}
         \centering
         \subfigure[][non-COVID-19]{%
-            \only<1>{\includegraphics[width=.45\textwidth]{img/draft-non-covid-offline-steps.pdf}}%
-            \only<2>{\includegraphics[width=.45\textwidth]{img/draft-non-covid-offline-steps-winner.pdf}}%
+            \only<1>{\includegraphics[width=.49\textwidth]{img/draft-non-covid-offline-steps.pdf}}%
+            \only<2>{\includegraphics[width=.49\textwidth]{img/draft-non-covid-offline-steps-winner.pdf}}%
             \label{fig:offline-non-covid-steps}%
         }%
         %\hspace{8pt}
         \subfigure[][COVID-19]{%
-            \only<1>{\includegraphics[width=.45\textwidth]{img/draft-covid-offline-steps.pdf}}%
-            \only<2>{\includegraphics[width=.45\textwidth]{img/draft-covid-offline-steps-winner.pdf}}%
+            \only<1>{\includegraphics[width=.49\textwidth]{img/draft-covid-offline-steps.pdf}}%
+            \only<2>{\includegraphics[width=.49\textwidth]{img/draft-covid-offline-steps-winner.pdf}}%
             \label{fig:offline-covid-steps}%
         }
         \centering
@@ -1560,14 +1569,14 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \begin{figure}
         \centering
         \subfigure[][non-COVID-19]{%
-            \only<1>{\includegraphics[width=.45\textwidth]{img/draft-non-covid-online-steps.pdf}}%
-            \only<2>{\includegraphics[width=.45\textwidth]{img/draft-non-covid-online-steps-winner.pdf}}%
+            \only<1>{\includegraphics[width=.49\textwidth]{img/draft-non-covid-online-steps.pdf}}%
+            \only<2>{\includegraphics[width=.49\textwidth]{img/draft-non-covid-online-steps-winner.pdf}}%
             \label{fig:online-non-covid-steps}%
         }%
         %\hspace{8pt}%
         \subfigure[][COVID-19]{%
-            \only<1>{\includegraphics[width=.45\textwidth]{img/draft-covid-online-steps.pdf}}%
-            \only<2>{\includegraphics[width=.45\textwidth]{img/draft-covid-online-steps-winner.pdf}}%
+            \only<1>{\includegraphics[width=.49\textwidth]{img/draft-covid-online-steps.pdf}}%
+            \only<2>{\includegraphics[width=.49\textwidth]{img/draft-covid-online-steps-winner.pdf}}%
             \label{fig:online-covid-steps}%
         }%
         \centering
