@@ -1,0 +1,91 @@
+- mirar al tribunal al presentar 
+- ¡manos en los bolsillos no!
+
+- pasar presentación a Paul Patras
+  por si se pierde la conexión
+
+- conectar por cable mejor
+
+- muy densa, hay demasiado detalle
+
+- al principio falla contar el big picture
+ * service orchestration:
+   - qué es un servicio
+   - qué es orchestration
+        a. decidir dónde poner las BSs
+        b. 
+        c.
+        d.
+    - ensayar mejor la intro.
+   - presentar como en discusiones (introducirlo como problema)
+   - parece que son 4 cosas
+     distintas cada parte 
+
+
+- parte I: 
+ * en todas las partes pon bien una imagen con el problema que resuelves
+ - poner gente, y luego pones cómo cubrir las cosas
+ - no digo qué es MEC
+ - no digo qué es 5G
+
+
+
+- recortar tiempo (10min.):
+  - cargarte el estado del arte
+  - cambiar por motivation
+  - mover contenido a backup
+
+- definir bien todo el contexto del problem
+  e.g.:
+    * por qué 1ms de RTT -> definir URLLC tactile, etc.
+    * por qué 99.9999% reliab?
+
+- introducir FDD y TDD, y sus características
+  el por qué de los resultados
+   -> hablarlo en el principio al mencionar TDD y FDD
+
+   -> fuera la de FDD si no hay tiempo, y la de TDD más grande
+      (son interesantes, no quitar si es posible)
+
+[v]- cambiar BS en vez de radio heads en la eCDF
+
+- un federated environment explicar -> es un operador externo
+  explicar qué entendemos como federated con dibujos
+
+- puedes recortar al enseñar la red neuronal DQN
+
+- al explicar federation -> usar nubes con servers
+  para explicar que es una federación
+
+- OKpi no decir "is just another" (te lo evitas estado del arte)
+
+- poner figura de cómo gamma impacta, es cómo lo ha solucionado
+  dibujar 2 casos extremos con gamma para ver cómo lo soluciona
+
+- antes de decision y expanded:
+    diapo antes con un ejemplo de cóm oel gamma impacta
+    cómo ayuda a escoger lo mejor
+    luego ya te metes en detalles
+
+- Part IV: animación de escalar en la Fig.31
+
+- SoA de V2N agrupar todas técnicas y decir de palabra
+
+- AL FINAL poner x jour, y conf, y open-source contribs
+
+[v]- H(s) es reliability
+
+- motiva mejor el principio
+  qué es un servicio (e.g. tactile)
+  primero preparo la red
+  luego decido fed.
+   ...
+
+- quitar fórmula en expanded & decision graph
+
+- la 56 se puede ir más rápido
+
+
+- SoA -> simplemente di qué gap hay
+
+

@@ -126,23 +126,56 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 %%% \end{frame}
 
 \begin{frame}
-    \frametitle{Motivation}
+    \frametitle{Introduction}
 
     \textit{``Service orchestration is the process of designing, creating, delivering, and monitoring service offerings in an automated way.''} -- Ericsson
 
 \end{frame}
 
-\begin{frame}
-    \frametitle{Motivation}
 
-    To assess orchestration \footnote{The presentation focuses on the main thesis contributions.}:
-    \begin{enumerate}
-        \item design 5G infrastructure
-        \item create service @local or @federated infrastructure
-        \item embed service in the infrastructure
-        \item monitor/scale the embedded service
-    \end{enumerate}
+
+\begin{frame}
+    \frametitle{Introduction}
+    \only<1>{
+        \begin{figure}
+            \includegraphics[width=.8\textwidth]{img/big-picture-start.pdf}
+            \caption{Orchestration of three services.}
+        \end{figure}
+    }%
+    \only<2>{
+        \begin{minipage}{0.4\textwidth}
+            Service Orchestration:
+            \begin{itemize}
+                \item design network
+                \item where services run?
+                \item deliver to users
+                \item monitor/scale service
+            \end{itemize}
+        \end{minipage}
+        \begin{minipage}{0.59\textwidth}
+            \begin{figure}
+                \includegraphics[width=\textwidth]{img/big-picture-start.pdf}
+                \caption{Orchestration of three services.}
+            \end{figure}
+        \end{minipage}
+
+    }
 \end{frame}
+
+
+
+
+%% \begin{frame}
+%%     \frametitle{Motivation}
+%% 
+%%     To assess orchestration \footnote{The presentation focuses on the main thesis contributions.}:
+%%     \begin{enumerate}
+%%         \item design 5G infrastructure
+%%         \item create service @local or @federated infrastructure
+%%         \item embed service in the infrastructure
+%%         \item monitor/scale the embedded service
+%%     \end{enumerate}
+%% \end{frame}
 
 
 
@@ -156,24 +189,64 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 
 \section{Generation of 5G infrastructure graphs}
-\subsection{State of the art}
+\subsection{Motivation}
 \begin{frame}
     \frametitle{Outline}
     \tableofcontents[subsectionstyle=show/shaded/hide,sectionstyle=show/shaded]
 \end{frame}
 
 
+%% OLD MOTIVATION SLIDE
+%% \begin{frame}
+%%     \frametitle{\secname}
+%%     \framesubtitle{\subsecname}
+%% 
+%%     \begin{figure}
+%%         \centering
+%%         \includegraphics[width=.8\textwidth]{img/pop-and-antennas-no-labels.pdf}
+%%         \caption{Illustration of BS and PoPs in Madrid.}
+%%         \label{fig:bs-pops-no-label}
+%%     \end{figure}
+%% \end{frame}
+
+
+
+
 \begin{frame}
     \frametitle{\secname}
     \framesubtitle{\subsecname}
 
-    \begin{figure}
-        \centering
-        \includegraphics[width=.8\textwidth]{img/pop-and-antennas-no-labels.pdf}
-        \caption{Illustration of BS and PoPs in Madrid.}
-        \label{fig:bs-pops-no-label}
-    \end{figure}
+    \only<1-2>{
+        \begin{figure}
+            \centering
+            \only<1>{\includegraphics[width=.8\textwidth]{img/big-picture-start.pdf}}%
+            \only<2>{\includegraphics[width=.8\textwidth]{img/big-picture-infra-gen.pdf}}
+            \caption{
+                \only<2>{Network infrastructure for service providing.}
+            }
+            \label{fig:big-infra}
+        \end{figure}
+    }%
+    \only<3>{
+        \begin{minipage}{0.45\textwidth}
+            In this part -- \textbf{location} of:
+            \begin{enumerate}
+                \item \textbf{BSs} for user coverage
+                \item \textbf{servers} to process traffic
+            \end{enumerate}
+        \end{minipage}
+        \begin{minipage}{0.5\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\textwidth]{img/big-picture-infra-gen.pdf}
+                \caption{Network infrastructure for service providing.}
+                \label{fig:big-infra}
+            \end{figure}
+        \end{minipage}
+    }
 \end{frame}
+
+
 
 
 
@@ -222,7 +295,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         Derive:
         \begin{itemize}
             \item BS location
-            \item MEC PoP\footnote{Point of Presence (PoP) - servers} location
+            \item MEC PoP server location
         \end{itemize}
         Meet:
         \begin{itemize}
@@ -949,8 +1022,8 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \begin{minipage}{0.37\textwidth}
         \textbf{Latency} constraint $D(s)$:
         \begin{equation}
-            \only<1>{d_{\text{net}}(\psi) + d_{\text{proc}} \le D(s)}
-            \only<2>{\highlight{d_{\text{net}}(\psi)}{propagation delay} + d_{\text{proc}} \le D(s)}
+            \only<1>{d_{\text{net}}(\psi) + d_{\text{proc}}(\psi) \le D(s)}
+            \only<2>{\highlight{d_{\text{net}}(\psi)}{propagation delay} + d_{\text{proc}}(\psi) \le D(s)}
             \only<3>{d_{\text{net}}(\psi) + \highlight{d_{\text{proc}}(\psi)}{processing delay} \le D(s)}
             \label{eq:delay-constraint}
         \end{equation}
