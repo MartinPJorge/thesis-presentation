@@ -22,7 +22,7 @@
      distintas cada parte 
 
 
-- parte I: 
+[v]- parte I: 
  * en todas las partes pon bien una imagen con el problema que resuelves
  - poner gente, y luego pones cómo cubrir las cosas
  - no digo qué es MEC
@@ -31,13 +31,13 @@
 
 
 - recortar tiempo (10min.):
-  - cargarte el estado del arte
-  - cambiar por motivation
+  [v]- cargarte el estado del arte
+  [v]- cambiar por motivation
   - mover contenido a backup
 
-- definir bien todo el contexto del problem
+[v]- definir bien todo el contexto del problem
   e.g.:
-    * por qué 1ms de RTT -> definir URLLC tactile, etc.
+    [v]* por qué 1ms de RTT -> definir URLLC tactile, etc.
     * por qué 99.9999% reliab?
 
 - introducir FDD y TDD, y sus características

@@ -5,6 +5,8 @@
 \usepackage{subfigure}
 \usepackage{xcolor}
 \usepackage{tikz}
+\usepackage{tabularx}
+\usepackage{makecell}
 \usepackage{tikzscale}
 \usepackage{animate}
 \usetikzlibrary{decorations.pathreplacing}
@@ -216,67 +218,80 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \frametitle{\secname}
     \framesubtitle{\subsecname}
 
-    \only<1-2>{
-        \begin{figure}
-            \centering
-            \only<1>{\includegraphics[width=.8\textwidth]{img/big-picture-start.pdf}}%
-            \only<2>{\includegraphics[width=.8\textwidth]{img/big-picture-infra-gen.pdf}}
-            \caption{
-                \only<2>{Network infrastructure for service providing.}
-            }
-            \label{fig:big-infra}
-        \end{figure}
-    }%
-    \only<3>{
-        \begin{minipage}{0.45\textwidth}
-            In this part -- \textbf{location} of:
-            \begin{enumerate}
-                \item \textbf{BSs} for user coverage
-                \item \textbf{servers} to process traffic
-            \end{enumerate}
-        \end{minipage}
-        \begin{minipage}{0.5\textwidth}
-            \begin{figure}
-                \centering
-                \includegraphics[width=\textwidth]{img/big-picture-infra-gen.pdf}
-                \caption{Network infrastructure for service providing.}
-                \label{fig:big-infra}
-            \end{figure}
-        \end{minipage}
-    }
+    \begin{figure}
+        \centering
+        \only<1>{\includegraphics[width=.8\textwidth]{img/big-picture-start.pdf}}%
+        \only<2>{\includegraphics[width=.8\textwidth]{img/big-picture-infra-gen.pdf}}
+        \caption{
+            \only<1>{Orchestration of three services.}
+            \only<2>{Network infrastructure for service providing.}
+        }
+        \label{fig:big-infra}
+    \end{figure}
 \end{frame}
 
 
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+
+    \begin{minipage}{0.35\textwidth}
+        This part derives \textbf{location} of:
+        \begin{enumerate}
+            \item \textbf{BSs} for user coverage
+            \item \textbf{servers} to process traffic
+        \end{enumerate}
+        \vspace{1em}
+        \only<2>{
+            for \textbf{augmented reality}:
+            \begin{itemize}
+                \item tactile latency 1ms
+            \end{itemize}
+        }
+    \end{minipage}
+    \begin{minipage}{0.6\textwidth}
+        \begin{figure}
+            \centering
+            \only<1>{\includegraphics[width=\textwidth]{img/big-picture-infra-gen-highlight.pdf}}%
+            \only<2>{\includegraphics[width=\textwidth]{img/big-picture-infra-gen-highlight-ar.pdf}}
+            \caption{Network infrastructure for service providing.}
+            \label{fig:big-infra}
+        \end{figure}
+    \end{minipage}
+\end{frame}
 
 
 
 \begin{frame}
     \frametitle{\secname}
     \framesubtitle{\subsecname}
-    %
-    \textbf{Location of BSs}:
-    \begin{itemize}
-        \item Neyman-Scott Poisson Cluster Process~\cite{vinay-moller-interference}
-        \item Poisson Point Processes (PPPs)~\cite{stochastic-martina}
-            \begin{itemize}
-                \item homogeneous~\cite{cran-vinay-moller,hetnets-cor}
-                \item hard-core~\cite{hard-core-cover} \pause
-                \item {\color{red}\textbf{inhomogeneous \& Matérn~II}}
-            \end{itemize}
-    \end{itemize}
-    \pause
-    \vfill
-    \hrule
-    \vfill
-    \textbf{Location of MEC PoPs}:
-    \begin{itemize}
-        \item along highways~\cite{usa-mec}
-        \item within stadiums~\cite{tokio-olympics} \pause
-        \item {\color{red}\textbf{population census}}
-        \item {\color{red}\textbf{access \& aggregation rings}}
-    \end{itemize}
 
+    \begin{minipage}{.45\textwidth}
+        {\color{red}\textbf{New}} methodology in the SoA
+        \begin{itemize}
+            \item \textbf{BS} location:
+                \begin{itemize}
+                    \item inhomogeneous Mattérn II PPP
+                \end{itemize}
+            \item \textbf{Server} location:
+                \begin{itemize}
+                    \item population census
+                    \item access \& aggregation rings
+                    \item satisfy RTT
+                \end{itemize}
+        \end{itemize}
+    \end{minipage}
+    \begin{minipage}{.5\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\textwidth]{img/big-picture-infra-gen-highlight-ar.pdf}
+                \caption{Network infrastructure for service providing.}
+                \label{fig:big-infra}
+            \end{figure}
+    \end{minipage}
 \end{frame}
+
+
 
 
 \subsection{Thesis contribution}
@@ -287,32 +302,35 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 
 
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{\subsecname}
-    \vfill
-    \begin{minipage}{0.27\textwidth}
-        Derive:
-        \begin{itemize}
-            \item BS location
-            \item MEC PoP server location
-        \end{itemize}
-        Meet:
-        \begin{itemize}
-            \item Tactile RTT of \mbox{\textbf{1 ms}}
-        \end{itemize}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.68\textwidth}
-        \begin{figure}
-            \centering
-            \includegraphics[width=\textwidth]{img/pop-and-antennas.pdf}
-            \caption{BS and MEC PoP locations.}
-            \label{fig:bs-pop-locations}
-        \end{figure}
-    \end{minipage}
-    \vfill
-\end{frame}
+%% ------------------------
+%% OLD FIG TO INTRODUCE WHAT WE DO
+%% ------------------------
+%% \begin{frame}
+%%     \frametitle{\secname}
+%%     \framesubtitle{\subsecname}
+%%     \vfill
+%%     \begin{minipage}{0.27\textwidth}
+%%         Derive:
+%%         \begin{itemize}
+%%             \item BS location
+%%             \item MEC PoP server location
+%%         \end{itemize}
+%%         Meet:
+%%         \begin{itemize}
+%%             \item Tactile RTT of \mbox{\textbf{1 ms}}
+%%         \end{itemize}
+%%     \end{minipage}
+%%     \hfill
+%%     \begin{minipage}{0.68\textwidth}
+%%         \begin{figure}
+%%             \centering
+%%             \includegraphics[width=\textwidth]{img/pop-and-antennas.pdf}
+%%             \caption{BS and MEC PoP locations.}
+%%             \label{fig:bs-pop-locations}
+%%         \end{figure}
+%%     \end{minipage}
+%%     \vfill
+%% \end{frame}
 
 
 
@@ -377,7 +395,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         \only<4>{\includegraphics[width=.8\textwidth]{img/grid-radius.pdf}}%
         \only<5>{\includegraphics[width=.8\textwidth]{img/grid-final-antennas.pdf}}
         %% \input{grid.tex}
-        \caption{Inhomogeneous Mattérn~II process.}
+        \caption{BS location -- inhomogeneous Mattérn~II process.}
         \label{fig:grid-aau-gen}
     \end{figure}
 \end{frame}
@@ -458,7 +476,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \frametitle{\secname}
     \framesubtitle{\subsecname}
 
-    Derive MEC PoP location considering:
+    Derive server location considering:
 
 
     \begin{equation}
@@ -472,7 +490,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \vfill
 
     \begin{itemize}
-        \item $d$: distance between BS and MEC PoP
+        \item $d$: distance between BS and server
         \item $M$: \#traversed rings (e.g., $1,2,\ldots$)
         \item $UL$: Uplink propagation latency
         \item $DL$: Downlink propagation latency
@@ -482,15 +500,13 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 
 
-
-
 \begin{frame}
     \frametitle{\secname}
     \framesubtitle{\subsecname}
 
     \centering{
-        \only<1>{$m_M$: maximum distance between MEC PoP at ring $M$ and BS}
-        \only<2>{$m_2$: maximum distance between MEC PoP at ring $2$ and BS}
+        \only<1>{$m_M$: maximum distance between server at ring $M$ and BS}
+        \only<2>{$m_2$: maximum distance between server at ring $2$ and BS}
     }
     \begin{figure}
         \centering
@@ -504,6 +520,27 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 
 
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+    \textbf{Experiments}
+    \begin{itemize}
+        \item Urban, highway, industrial \textbf{scenarios}
+        \item NR \textbf{BSs}:
+            \begin{itemize}
+                \item FDD 120 kHz 7s
+                \item TDD 120 kHz 7s
+                \item FDD \!30 kHz 2s
+            \end{itemize}
+        \item \textbf{Servers}:
+            \begin{itemize}
+                \item M1 network ring
+                \item M2 network ring
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
 
 
 \begin{frame}
@@ -514,10 +551,10 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 \begin{figure}
     \centering
     % \comment{!!! @Jorge: this is still here!!! We need to improve the figures captions. It's hard to understand what the figures show only by looking at the pictures. It is not explained in the what $C_{A,M2}$ means. !!!}
-    \subfigure[FDD 120 kHz 7s]{ \includegraphics[clip, trim=0cm 2.7cm 0.25cm 3cm, width=0.35\textwidth]{img/madrid-ii-m2.png}}
+    \subfigure[FDD 120 kHz 7s]{ \includegraphics[clip, trim=0cm 6cm 0.25cm 3cm, width=0.38\textwidth]{img/madrid-ii-m2.png}}
         ~
-    \subfigure[TDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 2.7cm 0.25cm 3cm, width=0.35\textwidth]{img/madrid-i-iii-m2.png}}\\
-    \caption{\textbf{Urban scenario} (Madrid city center) -- $C_{A,M2}=$covered BSs.}
+    \subfigure[TDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 6cm 0.25cm 3cm, width=0.38\textwidth]{img/madrid-i-iii-m2.png}}\\
+    \caption{\textbf{Urban scenario} (Madrid city center) -- $C_{A,M2}=$covered BSs by server at M2.}
     \label{fig:madrid}
 \end{figure}
 
@@ -534,10 +571,10 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 \begin{figure}
     \centering
-    \subfigure[FDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 8.5cm 0.25cm 6.7cm, width=0.485\textwidth]{img/hoces-del-cabriel-ii-m1.png}}
+    \subfigure[FDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 11cm 0.25cm 6.7cm, width=0.485\textwidth]{img/hoces-del-cabriel-ii-m1.png}}
      ~                       
-    \subfigure[TDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 8.5cm 0.25cm 6.7cm, width=0.485\textwidth]{img/hoces-del-cabriel-i-iii-m1.png}}\\
-    \caption{\textbf{Highway scenario} (Hoces del Cabriel A3) -- $C_{A,M1}=$covered BSs by M1 MEC PoP.}
+    \subfigure[TDD 120 kHz 7s]{\includegraphics[clip, trim=0cm 11cm 0.25cm 6.7cm, width=0.485\textwidth]{img/hoces-del-cabriel-i-iii-m1.png}}\\
+    \caption{\textbf{Highway scenario} (Hoces del Cabriel A3) -- $C_{A,M1}=$covered BSs by server at M1.}
     \label{fig:madrid}
 \end{figure}
 
@@ -556,7 +593,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         \centering
         \includegraphics[width=.8\columnwidth]{img/cdfs}
         \vspace{1em}
-        \caption{eCDF of the number of BSs assigned to a MEC PoP in the studied scenarios.}
+        \caption{eCDF of the number of BSs assigned to a server in the studied scenarios.}
         % \comment{LC: Increase the axis and label font size}
         \label{fig:cdfs}
     \end{figure}
@@ -579,7 +616,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \end{itemize}
     Open-source:
     \begin{itemize}
-        \item \textbf{BS \& MEC PoP generation}: \url{github.com/MartinPJorge/mec-generator/}
+        \item \textbf{BS \& MEC PoP generation}: \url{http://github.com/MartinPJorge/mec-generator/}
         \item \textbf{5GEN}: \url{https://github.com/MartinPJorge/mec-generator/tree/5g-infra-gen/}
     \end{itemize}
     
@@ -2161,6 +2198,36 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 \section*{Appendix}
 \begin{frame}
     \frametitle{\secname}
+    \framesubtitle{Part I SoA}
+    %
+    \textbf{Location of BSs}:
+    \begin{itemize}
+        \item Neyman-Scott Poisson Cluster Process~\cite{vinay-moller-interference}
+        \item Poisson Point Processes (PPPs)~\cite{stochastic-martina}
+            \begin{itemize}
+                \item homogeneous~\cite{cran-vinay-moller,hetnets-cor}
+                \item hard-core~\cite{hard-core-cover} \pause
+                \item {\color{red}\textbf{inhomogeneous \& Matérn~II}}
+            \end{itemize}
+    \end{itemize}
+    \pause
+    \vfill
+    \hrule
+    \vfill
+    \textbf{Location of MEC PoPs}:
+    \begin{itemize}
+        \item along highways~\cite{usa-mec}
+        \item within stadiums~\cite{tokio-olympics} \pause
+        \item {\color{red}\textbf{population census}}
+        \item {\color{red}\textbf{access \& aggregation rings}}
+    \end{itemize}
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{\secname}
     \framesubtitle{Inhomogeneous Mattérn~II process}
     \begin{lemma}
     Given an \emph{inhomogeneous} marked PPP $X$ with \emph{intensity function} $\lambda$, the \emph{thinning} function $I_2$, and marks $m \sim \frac{1}{\lambda(x)}$, the resulting thinned point process, called \emph{inhomogeneous Mat\'ern~II}~PP, has the following average \emph{number of points} at $C$:
@@ -2192,7 +2259,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 \begin{frame}
     \frametitle{\secname}
-    \framesubtitle{Maximum distance between PoP and BS}
+    \framesubtitle{Maximum distance between server and BS}
 
 
     The RTT considered is computed as
@@ -2202,13 +2269,42 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \end{equation}
 
 
-    We find $m_M$, the maximum distance from MEC PoP $m$ to the BS at position $x$, as:
+    We find $m_M$, the maximum distance from server $m$ to the BS at position $x$, as:
     \begin{equation}
         \lVert x-m \rVert_1 \le l^{-1}\left( \frac{RTT - 2p(M) - t_r}{2} \right)  = m_M
         \label{eq:max-dis}
     \end{equation}
     with $\lVert \cdot \rVert_1$ denoting the Manhattan distance.
 \end{frame}
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{NR profiles}
+
+\begin{table}
+    \centering
+    \caption{NR profiles satisfying the tactile interaction latency}
+    \label{table:radio}
+    %\vspace{-3mm}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{.76\textwidth}{ccccc}
+    \hline
+    \textbf{Profile} & \textbf{DL} & \textbf{UL} & \textbf{\makecell{M1\\distance}} & \textbf{\makecell{M2\\distance}} \\ \hline\hline
+    FDD 30 kHz 2s & 0.39 ms & 0.39 ms & 12 km & 2 km \\ \hline
+    FDD 120 kHZ 7s & 0.33 ms & 0.33 ms & 24 km & 14 km \\ \hline
+    TDD 120 kHz 7s & 0.39 ms & 0.39 ms & 12 km & 2 km \\ \hline
+    \end{tabularx}
+\end{table}
+
+    \begin{itemize}
+        \item \emph{Note}: FDD 30 kHz 2s stands for Frequency Division Duplex scheme with a subcarrier of 30 kHz and 2 symbols.
+        \item \emph{Note}: DL and UL values are the worst case transmission latency presented in \cite{radio-delays}.
+    \end{itemize}
+
+
+\end{frame}
+
 
 
 
