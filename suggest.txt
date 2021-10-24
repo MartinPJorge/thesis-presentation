@@ -40,24 +40,24 @@
     [v]* por qué 1ms de RTT -> definir URLLC tactile, etc.
     * por qué 99.9999% reliab?
 
-- introducir FDD y TDD, y sus características
+[v]- introducir FDD y TDD, y sus características
   el por qué de los resultados
-   -> hablarlo en el principio al mencionar TDD y FDD
+   [v]-> hablarlo en el principio al mencionar TDD y FDD
 
-   -> fuera la de FDD si no hay tiempo, y la de TDD más grande
+   [v]-> fuera la de FDD si no hay tiempo, y la de TDD más grande
       (son interesantes, no quitar si es posible)
 
 [v]- cambiar BS en vez de radio heads en la eCDF
 
-- un federated environment explicar -> es un operador externo
+[v]- un federated environment explicar -> es un operador externo
   explicar qué entendemos como federated con dibujos
 
 - puedes recortar al enseñar la red neuronal DQN
 
-- al explicar federation -> usar nubes con servers
+[v]- al explicar federation -> usar nubes con servers
   para explicar que es una federación
 
-- OKpi no decir "is just another" (te lo evitas estado del arte)
+[v]- OKpi no decir "is just another" (te lo evitas estado del arte)
 
 - poner figura de cómo gamma impacta, es cómo lo ha solucionado
   dibujar 2 casos extremos con gamma para ver cómo lo soluciona
