@@ -163,8 +163,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="204.48198"
-     inkscape:cy="212.19365"
+     inkscape:cx="276.52145"
+     inkscape:cy="155.05079"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -606,7 +606,7 @@
          sodipodi:role="line"
          x="185.20256"
          y="197.84317"
-         id="tspan7384">federated domain</tspan>
+         id="tspan7384">federation operator</tspan>
     </text>
     <text
        y="183.30928"
@@ -631,7 +631,7 @@
          sodipodi:role="line"
          x="96.468826"
          y="197.65627"
-         id="tspan7384-0">local domain</tspan>
+         id="tspan7384-0">local operator</tspan>
     </text>
     <g
        transform="matrix(0.35277777,0,0,-0.35277777,44.444579,182.5455)"
