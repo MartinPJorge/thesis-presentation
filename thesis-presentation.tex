@@ -142,19 +142,24 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         \end{figure}
     }%
     \only<2>{
+        \begin{figure}
+            \includegraphics[width=.8\textwidth]{img/big-picture-start-edge-fog.pdf}
+            \caption{Orchestration of three services in Edge \& Fog.}
+        \end{figure}
+    }%
+    \only<3>{
         \begin{minipage}{0.4\textwidth}
             Service Orchestration:
             \begin{itemize}
                 \item design network
                 \item where services run?
                 \item deliver to users
-                \item monitor/scale service
             \end{itemize}
         \end{minipage}
         \begin{minipage}{0.59\textwidth}
             \begin{figure}
-                \includegraphics[width=\textwidth]{img/big-picture-start.pdf}
-                \caption{Orchestration of three services.}
+                \includegraphics[width=\textwidth]{img/big-picture-start-edge-fog.pdf}
+                \caption{Orchestration of three services in Edge \& Fog.}
             \end{figure}
         \end{minipage}
 
@@ -217,10 +222,10 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
     \begin{figure}
         \centering
-        \only<1>{\includegraphics[width=.8\textwidth]{img/big-picture-start.pdf}}%
+        \only<1>{\includegraphics[width=.8\textwidth]{img/big-picture-start-edge-fog.pdf}}%
         \only<2>{\includegraphics[width=.8\textwidth]{img/big-picture-infra-gen.pdf}}
         \caption{
-            \only<1>{Orchestration of three services.}
+            \only<1>{Orchestration of three services in Edge \& Fog.}
             \only<2>{Network infrastructure for service providing.}
         }
         \label{fig:big-infra}
@@ -433,7 +438,6 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         \begin{itemize}
             \item \only<2>{\color{gray}} $R$: Madrid city
             \item \only<2>{\color{gray}} $G(x)$: Madrid census
-            \item satisfy 1ms tactile latency
         \end{itemize}
     \end{minipage}
     \begin{minipage}{.5\textwidth}
@@ -943,18 +947,17 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 
 
-
 \begin{frame}
     \frametitle{\secname}
     \framesubtitle{\subsecname}
 
     \begin{figure}
         \centering
-        \includegraphics[width=.7\columnwidth]{img/shrink-federated.eps}
-        \caption{Cumulative reward vs. available federation resources.}
+        \subfigure[Increasing local resources.]{\includegraphics[width=.45\columnwidth]{img/shrink-local.eps}}\hspace{1em}
+        \subfigure[Increasing resources in federation.]{\includegraphics[width=.45\columnwidth]{img/shrink-federated.eps}}
+        \caption{Cumulative reward vs. available resources.}
     \end{figure}
 \end{frame}
-
 
 
 
@@ -1246,6 +1249,32 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 \end{frame}
 
 
+
+
+
+%%%%%%%%% OLD OKPI EXPLANATION %%%%%%%%%%
+%% \begin{frame}
+%%     \frametitle{\secname}
+%%     \framesubtitle{\subsecname}
+%% 
+%%     The \textbf{OKpi} (all KPI) solution:
+%%     \begin{itemize}
+%%         \item infrastructure as a graph
+%%         \item edges with:
+%%             \begin{itemize}
+%%                 \item delay
+%%                 \item reliability
+%%             \end{itemize}
+%%     \end{itemize}
+%%     \vfill
+%%     Solve in two steps:
+%%     \begin{enumerate}
+%%         \item Create a decision graph 
+%%         \item Create an expanded graph
+%%     \end{enumerate}
+%% \end{frame}
+
+
 \begin{frame}
     \frametitle{\secname}
     \framesubtitle{\subsecname}
@@ -1253,25 +1282,119 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 
     \begin{minipage}{.39\textwidth}
-        \textbf{Decision graph}
+        \textbf{Decision graph} $\tilde{G}=(\tilde{N}, \tilde{E})$.\vspace{1em}
         
-        \begin{itemize}
-            \item edge $(\tilde{n}_1,\tilde{n}_2)$ weights:
-                \begin{equation}
-                    \only<1>{\left( \frac{\tilde{D}_{\tilde{n}_1,\tilde{n}_2}}{D(s)}, \frac{\log \tilde{\eta}_{\tilde{n}_1,\tilde{n}_2}}{\log H(s)} \right)}%
-                    \only<2>{\Bigg( \highlight{ \frac{\tilde{D}_{\tilde{n}_1,\tilde{n}_2}}{D(s)} }{delay fraction}, \frac{\log \tilde{\eta}_{\tilde{n}_1,\tilde{n}_2}}{\log H(s)} \Bigg)}%
-                    \only<3>{\Bigg( \frac{\tilde{D}_{\tilde{n}_1,\tilde{n}_2}}{D(s)}, \highlight{ \frac{\log \tilde{\eta}_{\tilde{n}_1,\tilde{n}_2}}{\log H(s)} }{reliability fraction} \Bigg)}%
-                \end{equation}%
-        \end{itemize}
+        \onslide<2->{Nodes $\tilde{N}=\{\tilde{n}_1, \tilde{n}_2, \ldots\}$:
+            \begin{itemize}
+                \item $|\mathcal{V}|-1$ replicas
+            \end{itemize}
+        }
+        \vspace{1em}
+        \onslide<3->{Edges $\tilde{E}=\{ (\tilde{n}_1,\tilde{n}_2),\ldots \}$:
+            \begin{itemize}
+                \item two weights:
+                    \begin{equation}
+                        \only<3>{\left( \frac{\tilde{D}_{\tilde{n}_1,\tilde{n}_2}}{D(s)}, \frac{\log \tilde{\eta}_{\tilde{n}_1,\tilde{n}_2}}{\log H(s)} \right)}%
+                        \only<4>{\Bigg( \highlight{ \frac{\tilde{D}_{\tilde{n}_1,\tilde{n}_2}}{D(s)} }{delay fraction}, \frac{\log \tilde{\eta}_{\tilde{n}_1,\tilde{n}_2}}{\log H(s)} \Bigg)}%
+                        \only<5>{\Bigg( \frac{\tilde{D}_{\tilde{n}_1,\tilde{n}_2}}{D(s)}, \highlight{ \frac{\log \tilde{\eta}_{\tilde{n}_1,\tilde{n}_2}}{\log H(s)} }{reliability fraction} \Bigg)}%
+                        \onslide<6->{\left( \frac{\tilde{D}_{\tilde{n}_1,\tilde{n}_2}}{D(s)}, \frac{\log \tilde{\eta}_{\tilde{n}_1,\tilde{n}_2}}{\log H(s)} \right)}%
+                    \end{equation}%
+                \vspace{-1em}
+                \onslide<6->{\item create links $(\tilde{n}_1,\tilde{n}_2)$}
+            \end{itemize}
+        }
     \end{minipage}
     \begin{minipage}{.6\textwidth}
         \begin{figure}
-            \includegraphics[width=.8\textwidth]{img/decision-graph-edges-inter.pdf}%
+            \only<1>{\includegraphics[width=.8\textwidth]{img/decision-graph.pdf}}%
+            \only<2>{\includegraphics[width=.8\textwidth]{img/decision-graph-replicas.pdf}}%
+            \only<3>{\includegraphics[width=.8\textwidth]{img/decision-graph-replicas.pdf}}%
+            \only<4>{\includegraphics[width=.8\textwidth]{img/decision-graph-replicas.pdf}}%
+            \only<5>{\includegraphics[width=.8\textwidth]{img/decision-graph-replicas.pdf}}%
+            % \only<6>{\includegraphics[width=.8\textwidth]{img/decision-graph-edges.pdf}}%
+            \only<6>{\includegraphics[width=.8\textwidth]{img/decision-graph-edges-inter.pdf}}%
             \caption{OKpi decision graph.}
         \end{figure}
     \end{minipage}
 
 \end{frame}
+
+
+
+
+
+
+%%%% === SHORTENED OKPI EXPLANATION ===
+%%% \begin{frame}
+%%%     \frametitle{\secname}
+%%%     \framesubtitle{\subsecname}
+%%% 
+%%%     \begin{minipage}{.39\textwidth}
+%%%         \textbf{Expanded graph}:
+%%% 
+%%%         \begin{enumerate}
+%%%             \item add superscripts $\tilde{n}^{d,r}$
+%%%                 \begin{itemize}
+%%%                     \item $d$: delay to reach it
+%%%                     \item $r$: reliab. to reach it
+%%%                 \end{itemize}
+%%%             \onslide<2->{\item add $(\gamma+1)^2$ replicas}
+%%%             \onslide<3->{\item connect $\tilde{n_1}^{d_1,r_2}$ with $\tilde{n_2}^{d_2,r_2}$}
+%%%                 \onslide<4->{
+%%%                     \begin{itemize}
+%%%                         \item link $(\tilde{n}_1,\tilde{n}_2)\in\tilde{E}$
+%%%                         \item $d_1+\gamma\cdot d(\tilde{n}_1,\tilde{n}_2)\le d_2$
+%%%                         \item $r_1+\gamma\cdot r(\tilde{n}_1,\tilde{n}_2)\le r_2$
+%%%                     \end{itemize}
+%%%                 }
+%%%             \onslide<5->{\item one hop per VNF}
+%%%         \end{enumerate}
+%%%     \end{minipage}
+%%%     \begin{minipage}{.6\textwidth}
+%%%         \begin{figure}
+%%%             \only<1>{\includegraphics[width=.8\textwidth]{img/expanded-one-node.pdf}}%
+%%%             \only<2>{\includegraphics[width=.8\textwidth]{img/expanded-one-node-replicas.pdf}}%
+%%%             \only<3>{\includegraphics[width=.8\textwidth]{img/expanded-all-connections.pdf}}%
+%%%             \only<4>{\includegraphics[width=.8\textwidth]{img/expanded-feasible-connections.pdf}}%
+%%%             \only<5>{\includegraphics[width=.8\textwidth]{img/expanded-solution-1.pdf}}%
+%%%             \only<6>{\includegraphics[width=.8\textwidth]{img/expanded-solution-2.pdf}}%
+%%%             \caption{OKpi expanded graph $\gamma=3$.}
+%%%         \end{figure}
+%%%     \end{minipage}
+%%% \end{frame}
+%%% 
+%%% 
+%%% 
+%%% 
+%%% 
+%%% 
+%%% 
+%%% \begin{frame}
+%%%     \frametitle{\secname}
+%%%     \framesubtitle{\subsecname}
+%%% 
+%%% 
+%%% 
+%%%     \begin{minipage}{.39\textwidth}
+%%%         \textbf{Decision graph}
+%%%         
+%%%         \begin{itemize}
+%%%             \item edge $(\tilde{n}_1,\tilde{n}_2)$ weights:
+%%%                 \begin{equation}
+%%%                     \only<1>{\left( \frac{\tilde{D}_{\tilde{n}_1,\tilde{n}_2}}{D(s)}, \frac{\log \tilde{\eta}_{\tilde{n}_1,\tilde{n}_2}}{\log H(s)} \right)}%
+%%%                     \only<2>{\Bigg( \highlight{ \frac{\tilde{D}_{\tilde{n}_1,\tilde{n}_2}}{D(s)} }{delay fraction}, \frac{\log \tilde{\eta}_{\tilde{n}_1,\tilde{n}_2}}{\log H(s)} \Bigg)}%
+%%%                     \only<3>{\Bigg( \frac{\tilde{D}_{\tilde{n}_1,\tilde{n}_2}}{D(s)}, \highlight{ \frac{\log \tilde{\eta}_{\tilde{n}_1,\tilde{n}_2}}{\log H(s)} }{reliability fraction} \Bigg)}%
+%%%                 \end{equation}%
+%%%         \end{itemize}
+%%%     \end{minipage}
+%%%     \begin{minipage}{.6\textwidth}
+%%%         \begin{figure}
+%%%             \includegraphics[width=.8\textwidth]{img/decision-graph-edges-inter.pdf}%
+%%%             \caption{OKpi decision graph.}
+%%%         \end{figure}
+%%%     \end{minipage}
+%%% 
+%%% \end{frame}
 
 
 
@@ -1387,597 +1510,597 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 
 
-\section{Scaling of V2N services: a study case}
-\subsection{Motivation}
-\begin{frame}
-    \frametitle{Outline}
-    \tableofcontents[subsectionstyle=show/shaded/hide,sectionstyle=show/shaded]
-\end{frame}
-
-
-
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{\subsecname}
-
-    \begin{figure}
-        \includegraphics[width=.8\textwidth]{img/big-picture-vne.pdf}
-        \caption{V2N service scaling.}
-    \end{figure}
-\end{frame}
-
-
-
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{\subsecname}
-
-    \only<1>{
-        \begin{figure}
-            \includegraphics[width=.8\textwidth]{img/big-picture-scaling.pdf}
-            \caption{V2N service scaling.}
-        \end{figure}
-    }
-    \only<2>{
-        \begin{minipage}{.3\textwidth}
-            {\color{red}\textbf{New}} V2N scaling using:
-            \begin{itemize}
-                \item time-series forecasting
-                \item preemptive scaling based on forecast
-            \end{itemize}
-        \end{minipage}
-        \begin{minipage}{.65\textwidth}
-            \begin{figure}
-                \includegraphics[width=\textwidth]{img/big-picture-scaling.pdf}
-                \caption{V2N service scaling.}
-            \end{figure}
-        \end{minipage}
-    }
-\end{frame}
-
-
-
-
-
-
-
-
-
-\subsection{Thesis contribution}
-\begin{frame}
-    \frametitle{Outline}
-    \tableofcontents[subsectionstyle=show/shaded/hide,sectionstyle=show/shaded]
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{\subsecname}
-
-    \only<1>{
-        \begin{figure}
-            \includegraphics[width=.8\textwidth]{img/v2n-scaling-same-style.pdf}
-            \caption{V2N service vertical scaling.}
-        \end{figure}
-    }
-    \only<2>{
-        \begin{minipage}{0.37\textwidth}
-            Server -- $M/M/c$ queue:
-            \begin{itemize}
-                \item $\lambda(t)$: cars' arrival rate
-                \item $\mu$: CPU service rate
-                \item $c(t)$: number of CPUs
-            \end{itemize}
-        \end{minipage}
-        \hfill
-        \begin{minipage}{0.6\textwidth}
-            \begin{figure}
-                \centering
-                \includegraphics[width=\textwidth]{img/v2n-scaling-same-style.pdf}
-                \caption{V2N service vertical scaling.}
-            \end{figure}
-        \end{minipage}
-    }
-\end{frame}
-
-
-
-
-
-%%%%%%%%%% OLD M/M/c explanation %%%%%%%%%%
+%% \section{Scaling of V2N services: a study case}
+%% \subsection{Motivation}
+%% \begin{frame}
+%%     \frametitle{Outline}
+%%     \tableofcontents[subsectionstyle=show/shaded/hide,sectionstyle=show/shaded]
+%% \end{frame}
+%% 
+%% 
+%% 
+%% \begin{frame}
+%%     \frametitle{\secname}
+%%     \framesubtitle{\subsecname}
+%% 
+%%     \begin{figure}
+%%         \includegraphics[width=.8\textwidth]{img/big-picture-vne.pdf}
+%%         \caption{V2N service scaling.}
+%%     \end{figure}
+%% \end{frame}
+%% 
+%% 
+%% 
+%% \begin{frame}
+%%     \frametitle{\secname}
+%%     \framesubtitle{\subsecname}
+%% 
+%%     \only<1>{
+%%         \begin{figure}
+%%             \includegraphics[width=.8\textwidth]{img/big-picture-scaling.pdf}
+%%             \caption{V2N service scaling.}
+%%         \end{figure}
+%%     }
+%%     \only<2>{
+%%         \begin{minipage}{.3\textwidth}
+%%             {\color{red}\textbf{New}} V2N scaling using:
+%%             \begin{itemize}
+%%                 \item time-series forecasting
+%%                 \item preemptive scaling based on forecast
+%%             \end{itemize}
+%%         \end{minipage}
+%%         \begin{minipage}{.65\textwidth}
+%%             \begin{figure}
+%%                 \includegraphics[width=\textwidth]{img/big-picture-scaling.pdf}
+%%                 \caption{V2N service scaling.}
+%%             \end{figure}
+%%         \end{minipage}
+%%     }
+%% \end{frame}
+%% 
+%% 
+%% 
+%% 
+%% 
+%% 
+%% 
+%% 
+%% 
+%% \subsection{Thesis contribution}
+%% \begin{frame}
+%%     \frametitle{Outline}
+%%     \tableofcontents[subsectionstyle=show/shaded/hide,sectionstyle=show/shaded]
+%% \end{frame}
+%% 
+%% 
+%% \begin{frame}
+%%     \frametitle{\secname}
+%%     \framesubtitle{\subsecname}
+%% 
+%%     \only<1>{
+%%         \begin{figure}
+%%             \includegraphics[width=.8\textwidth]{img/v2n-scaling-same-style.pdf}
+%%             \caption{V2N service vertical scaling.}
+%%         \end{figure}
+%%     }
+%%     \only<2>{
+%%         \begin{minipage}{0.37\textwidth}
+%%             Server -- $M/M/c$ queue:
+%%             \begin{itemize}
+%%                 \item $\lambda(t)$: cars' arrival rate
+%%                 \item $\mu$: CPU service rate
+%%                 \item $c(t)$: number of CPUs
+%%             \end{itemize}
+%%         \end{minipage}
+%%         \hfill
+%%         \begin{minipage}{0.6\textwidth}
+%%             \begin{figure}
+%%                 \centering
+%%                 \includegraphics[width=\textwidth]{img/v2n-scaling-same-style.pdf}
+%%                 \caption{V2N service vertical scaling.}
+%%             \end{figure}
+%%         \end{minipage}
+%%     }
+%% \end{frame}
+%% 
+%% 
+%% 
+%% 
+%% 
+%% %%%%%%%%%% OLD M/M/c explanation %%%%%%%%%%
+%% %% \begin{frame}
+%% %%     \frametitle{\secname}
+%% %%     \framesubtitle{\subsecname}
+%% %% 
+%% %%     \begin{minipage}{0.37\textwidth}
+%% %%         Edge server -- $M/M/c$ queue:
+%% %%         \begin{itemize}
+%% %%             \item $\lambda(t)$: cars' arrival rate
+%% %%             \item $\mu$: CPU service rate
+%% %%             \item $c(t)$: number of CPUs
+%% %%         \end{itemize}
+%% %%         \only<2>{Scale to meet avg. latency:
+%% %%             \begin{equation}
+%% %%                 \frac{1}{\mu} + \frac{P_Q}{c(t)\mu - \lambda(t)}
+%% %%             \end{equation}
+%% %%             with $P_Q$ the prob. of all servers bussy (Earlang C).
+%% %%         }
+%% %%     \end{minipage}
+%% %%     \hfill
+%% %%     \begin{minipage}{0.6\textwidth}
+%% %%         \begin{figure}
+%% %%             \centering
+%% %%             \includegraphics[width=.8\textwidth]{img/MMc.pdf}
+%% %%             \caption{Server as $M/M/c$ queue.}
+%% %%         \end{figure}
+%% %%     \end{minipage}
+%% %% \end{frame}
+%% 
+%% 
+%% 
+%% 
 %% \begin{frame}
 %%     \frametitle{\secname}
 %%     \framesubtitle{\subsecname}
 %% 
 %%     \begin{minipage}{0.37\textwidth}
-%%         Edge server -- $M/M/c$ queue:
+%%         \textbf{Dataset} to derive $\lambda(t)$:
 %%         \begin{itemize}
-%%             \item $\lambda(t)$: cars' arrival rate
-%%             \item $\mu$: CPU service rate
-%%             \item $c(t)$: number of CPUs
+%%             \item 116 roads in Torino
+%%             \item (lat,lng) of roads
+%%             \item traffic [vehicles/hour] each 5 min.
+%%             \item avg. speed [vehicles/hour] each 5 min.
+%%             \item from 28/01/2020 -- now
 %%         \end{itemize}
-%%         \only<2>{Scale to meet avg. latency:
-%%             \begin{equation}
-%%                 \frac{1}{\mu} + \frac{P_Q}{c(t)\mu - \lambda(t)}
-%%             \end{equation}
-%%             with $P_Q$ the prob. of all servers bussy (Earlang C).
-%%         }
 %%     \end{minipage}
 %%     \hfill
 %%     \begin{minipage}{0.6\textwidth}
 %%         \begin{figure}
 %%             \centering
-%%             \includegraphics[width=.8\textwidth]{img/MMc.pdf}
-%%             \caption{Server as $M/M/c$ queue.}
+%%             \includegraphics[width=.9\textwidth]{img/traffic-drop.pdf}
+%%             \caption{Traffic after COVID-19 lockdowns -- 8~March.}
 %%         \end{figure}
 %%     \end{minipage}
+%% \end{frame}
+%% 
+%% 
+%% 
+%% 
+%% 
+%% \begin{frame}
+%%     \frametitle{\secname}
+%%     \framesubtitle{\subsecname}
+%% 
+%%     \begin{figure}
+%%         \animategraphics[autoplay,loop,trim = 0 100px 0 100px, width=.6\textwidth]{10}{img/torino-traffic-}{0}{27}
+%%         \caption{Vehicular traffic -- wee hours @Torino.}
+%%     \end{figure}
+%% \end{frame}
+%% 
+%% 
+%% 
+%% 
+%% 
+%% \begin{frame}
+%%     \frametitle{\secname}
+%%     \framesubtitle{\subsecname}
+%% 
+%%     \begin{minipage}{0.37\textwidth}
+%%         Predict future traffic $\lambda(t+n)$
+%%         \begin{itemize}
+%%             \item \textbf{time-series techniques}: DES, TES
+%%             \item \textbf{proprietary}: HTM
+%%             \item \textbf{neural networks}: GRU, LSTM, TCN, TCNLSTM
+%%         \end{itemize}
+%%         
+%%         Patterns:
+%%         \begin{itemize}
+%%             \item strong \textbf{seasonality}.
+%%             \onslide<2->{\item week \& weekend flows}
+%%             \item \onslide<3->{night hours,} \onslide<4->{rush hours,} \onslide<5->{schools' out}
+%%         \end{itemize}
+%%     \end{minipage}
+%%     \hfill
+%%     \begin{minipage}{0.6\textwidth}
+%%         \begin{figure}
+%%             \centering
+%%             \only<1>{\includegraphics[width=.9\textwidth]{img/orbassano-flow.pdf}}%
+%%             \only<2>{\includegraphics[width=.9\textwidth]{img/orbassano-flow-annotate-weekend.pdf}}%
+%%             \only<3>{\includegraphics[width=.9\textwidth]{img/orbassano-flow-annotate-night.pdf}}%
+%%             \only<4>{\includegraphics[width=.9\textwidth]{img/orbassano-flow-annotate-rush.pdf}}%
+%%             \only<5>{\includegraphics[width=.9\textwidth]{img/orbassano-flow-annotate-shools-out.pdf}}%
+%%             \caption{Weekly traffic at Corso Orbassano road.}
+%%         \end{figure}
+%%     \end{minipage}
+%% \end{frame}
+%% 
+%% 
+%% 
+%% 
+%% 
+%% \begin{frame}
+%%     \frametitle{\secname}
+%%     \framesubtitle{\subsecname}
+%% 
+%%     \begin{minipage}{0.37\textwidth}
+%%             \textbf{non-COVID-19} (2020)
+%%                 \begin{itemize}
+%%                     \item training: 28\textsuperscript{th}Feb - 28\textsuperscript{th}Mar
+%%                     \item testing: 29\textsuperscript{th}Feb - 07\textsuperscript{th}Mar
+%%                 \end{itemize}
+%%             \textbf{COVID-19} (2020)
+%%                 \begin{itemize}
+%%                     \item training: 06\textsuperscript{th}Feb - 07\textsuperscript{th}Mar
+%%                     \item testing: 08\textsuperscript{th}Mar - 15\textsuperscript{th}Mar
+%%                 \end{itemize}
+%%         \vspace{1.5em}
+%%         \onslide<2->{\textbf{Train}:
+%%             \begin{itemize}
+%%                 \item offline training
+%%                 \item online training
+%%             \end{itemize}
+%%         }
+%%     \end{minipage}
+%%     \hfill
+%%     \begin{minipage}{0.6\textwidth}
+%%         \only<2->{\begin{figure}
+%%                 \centering
+%%                 \includegraphics[width=.9\textwidth]{img/online-training-high-res.pdf}%
+%%                 \caption{Online training.}
+%%             \end{figure}
+%%         }
+%%     \end{minipage}
+%% 
+%% \end{frame}
+%% 
+%% 
+%% 
+%% 
+%% \begin{frame}
+%%     \frametitle{\secname}
+%%     \framesubtitle{\subsecname}
+%% 
+%%     \begin{minipage}{0.37\textwidth}
+%%         \textbf{Vertical scaling}:
+%%         \begin{enumerate}
+%%             \item $\lambda(t+n)$: traffic prediction
+%%             \only<2>{\item derive $c(t+n)$ s.t.:
+%%                 \begin{equation}
+%%                     \frac{1}{\mu} + \frac{P_Q}{c(t+n)\mu-\lambda(t+n)}\le D(s)
+%%                 \end{equation}
+%%                 with $D(s)$ the target delay
+%%             }
+%%         \end{enumerate}
+%%     \end{minipage}
+%%     \hfill
+%%     \begin{minipage}{0.6\textwidth}
+%%         \begin{figure}
+%%             \centering
+%%             \only<1>{\includegraphics[width=.9\textwidth]{img/MMc-scaling-1.pdf}}%
+%%             \only<2>{\includegraphics[width=.9\textwidth]{img/MMc-scaling.pdf}}
+%%             \caption{$M/M/c$-based scaling.}
+%%         \end{figure}
+%%     \end{minipage}
+%% \end{frame}
+%% 
+%% 
+%% 
+%% 
+%% 
+%% 
+%% \begin{frame}
+%%     \frametitle{\secname}
+%%     \framesubtitle{\subsecname}
+%% 
+%%     \center{{\color{white}\_}\only<2>{Most accurate: \color{red}\textbf{Neural Networks}}}
+%% 
+%%     \begin{figure}
+%%         \centering
+%%         \subfigure[][non-COVID-19]{%
+%%             \only<1>{\includegraphics[width=.49\textwidth]{img/draft-non-covid-offline-steps.pdf}}%
+%%             \only<2>{\includegraphics[width=.49\textwidth]{img/draft-non-covid-offline-steps-winner.pdf}}%
+%%             \label{fig:offline-non-covid-steps}%
+%%         }%
+%%         %\hspace{8pt}
+%%         \subfigure[][COVID-19]{%
+%%             \only<1>{\includegraphics[width=.49\textwidth]{img/draft-covid-offline-steps.pdf}}%
+%%             \only<2>{\includegraphics[width=.49\textwidth]{img/draft-covid-offline-steps-winner.pdf}}%
+%%             \label{fig:offline-covid-steps}%
+%%         }
+%%         \centering
+%%         \caption[]{
+%%             Prediction accuracy (offline training).
+%%         }%
+%%     \end{figure}
+%% \end{frame}
+%% 
+%% 
+%% 
+%% 
+%% 
+%% 
+%% 
+%% \begin{frame}
+%%     \frametitle{\secname}
+%%     \framesubtitle{\subsecname}
+%% 
+%%     \center{{\color{white}\_}\only<2>{Most accurate: \color{red}\textbf{TES}}}
+%% 
+%%     \begin{figure}
+%%         \centering
+%%         \subfigure[][non-COVID-19]{%
+%%             \only<1>{\includegraphics[width=.49\textwidth]{img/draft-non-covid-online-steps.pdf}}%
+%%             \only<2>{\includegraphics[width=.49\textwidth]{img/draft-non-covid-online-steps-winner.pdf}}%
+%%             \label{fig:online-non-covid-steps}%
+%%         }%
+%%         %\hspace{8pt}%
+%%         \subfigure[][COVID-19]{%
+%%             \only<1>{\includegraphics[width=.49\textwidth]{img/draft-covid-online-steps.pdf}}%
+%%             \only<2>{\includegraphics[width=.49\textwidth]{img/draft-covid-online-steps-winner.pdf}}%
+%%             \label{fig:online-covid-steps}%
+%%         }%
+%%         \centering
+%%         \caption[]{
+%%             Prediction accuracy (online training).
+%%         }%
+%%     \end{figure}
+%% \end{frame}
+%% 
+%% 
+%% 
+%% 
+%% 
+%% %%%%%    \begin{frame}
+%% %%%%%        \frametitle{\secname}
+%% %%%%%        \framesubtitle{\subsecname}
+%% %%%%%    
+%% %%%%%        \begin{figure}
+%% %%%%%            \centering
+%% %%%%%            \only<1>{
+%% %%%%%                \subfigure[][Remote driving savings]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-remote-driving-cost.pdf}%
+%% %%%%%                    \label{fig:cost-remote}%
+%% %%%%%                }%
+%% %%%%%                \subfigure[][Coop. aware. savings]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-cost.pdf}%
+%% %%%%%                    \label{fig:cost-cooperative}%
+%% %%%%%                }%
+%% %%%%%                \subfigure[][Hazard warn. savings]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-cost.pdf}%
+%% %%%%%                    \label{fig:cost-hazard}%
+%% %%%%%                }\\%
+%% %%%%%                \subfigure[][Remote driving delay violate]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-remote-driving-delay-violations.pdf}%
+%% %%%%%                    \label{fig:delay-remote}%
+%% %%%%%                }%
+%% %%%%%                \subfigure[][Coop. aware. delay violate]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-delay-violations.pdf}%
+%% %%%%%                    \label{fig:delay-cooperative}%
+%% %%%%%                }%
+%% %%%%%                \subfigure[][Hazard warn. violate]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-delay-violations.pdf}%
+%% %%%%%                    \label{fig:delay-hazard}%
+%% %%%%%                }%
+%% %%%%%            }%
+%% %%%%%            \only<2>{
+%% %%%%%                \subfigure[][Remote driving savings]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-remote-driving-cost-highlight.pdf}%
+%% %%%%%                    \label{fig:cost-remote}%
+%% %%%%%                }%
+%% %%%%%                \subfigure[][Coop. aware. savings]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-cost.pdf}%
+%% %%%%%                    \label{fig:cost-cooperative}%
+%% %%%%%                }%
+%% %%%%%                \subfigure[][Hazard warn. savings]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-cost.pdf}%
+%% %%%%%                    \label{fig:cost-hazard}%
+%% %%%%%                }\\
+%% %%%%%                \subfigure[][Remote driving delay violate]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-remote-driving-delay-violations-highlight.pdf}%
+%% %%%%%                    \label{fig:delay-remote}%
+%% %%%%%                }%
+%% %%%%%                \subfigure[][Coop. aware. delay violate]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-delay-violations.pdf}%
+%% %%%%%                    \label{fig:delay-cooperative}%
+%% %%%%%                }%
+%% %%%%%                \subfigure[][Hazard warn. violate]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-delay-violations.pdf}%
+%% %%%%%                    \label{fig:delay-hazard}%
+%% %%%%%                }%
+%% %%%%%            }%
+%% %%%%%            \only<3>{
+%% %%%%%                \subfigure[][Remote driving savings]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-remote-driving-cost.pdf}%
+%% %%%%%                    \label{fig:cost-remote}%
+%% %%%%%                }%
+%% %%%%%                \subfigure[][Coop. aware. savings]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-cost-highlight.pdf}%
+%% %%%%%                    \label{fig:cost-cooperative}%
+%% %%%%%                }%
+%% %%%%%                \subfigure[][Hazard warn. savings]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-cost.pdf}%
+%% %%%%%                    \label{fig:cost-hazard}%
+%% %%%%%                }\\%
+%% %%%%%                \subfigure[][Remote driving delay violate]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-remote-driving-delay-violations.pdf}%
+%% %%%%%                    \label{fig:delay-remote}%
+%% %%%%%                }%
+%% %%%%%                \subfigure[][Coop. aware. delay violate]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-delay-violations-highlight.pdf}%
+%% %%%%%                    \label{fig:delay-cooperative}%
+%% %%%%%                }%
+%% %%%%%                \subfigure[][Hazard warn. violate]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-delay-violations.pdf}%
+%% %%%%%                    \label{fig:delay-hazard}%
+%% %%%%%                }%
+%% %%%%%            }%
+%% %%%%%            \only<4>{
+%% %%%%%                \subfigure[][Remote driving savings]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-remote-driving-cost.pdf}%
+%% %%%%%                    \label{fig:cost-remote}%
+%% %%%%%                }%
+%% %%%%%                \subfigure[][Coop. aware. savings]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-cost.pdf}%
+%% %%%%%                    \label{fig:cost-cooperative}%
+%% %%%%%                }%
+%% %%%%%                \subfigure[][Hazard warn. savings]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-cost-highlight.pdf}%
+%% %%%%%                    \label{fig:cost-hazard}%
+%% %%%%%                }\\%
+%% %%%%%                \subfigure[][Remote driving delay violate]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-remote-driving-delay-violations.pdf}%
+%% %%%%%                    \label{fig:delay-remote}%
+%% %%%%%                }%
+%% %%%%%                \subfigure[][Coop. aware. delay violate]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-delay-violations.pdf}%
+%% %%%%%                    \label{fig:delay-cooperative}%
+%% %%%%%                }%
+%% %%%%%                \subfigure[][Hazard warn. violate]{%
+%% %%%%%                    \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-delay-violations-highlight.pdf}%
+%% %%%%%                    \label{fig:delay-hazard}%
+%% %%%%%                }%
+%% %%%%%            }%
+%% %%%%%            \caption[]{
+%% %%%%%                Cost savings and delay violations due to scaling --
+%% %%%%%                TES with online training was used.
+%% %%%%%            }%
+%% %%%%%        \end{figure}
+%% %%%%%    \end{frame}
+%% 
+
+
+
+
+
+
+
+
+
+%% \newcounter{backupcounter}
+%% \newcounter{backupfigcounter}
+%% \setcounter{backupcounter}{\value{framenumber}}
+%% \setcounter{backupfigcounter}{\value{figure}}
+%% \begin{frame}
+%%     \frametitle{\secname}
+%%     \framesubtitle{\subsecname}
+%% 
+%%     \begin{figure}
+%%         \centering
+%%             \subfigure[][Remote driving savings]{%
+%%                 \includegraphics[width=.3\textwidth]{img/draft-remote-driving-cost.pdf}%
+%%                 \label{fig:cost-remote}%
+%%             }%
+%%             \subfigure[][Coop. aware. savings]{%
+%%                 \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-cost.pdf}%
+%%                 \label{fig:cost-cooperative}%
+%%             }%
+%%             \subfigure[][Hazard warn. savings]{%
+%%                 \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-cost.pdf}%
+%%                 \label{fig:cost-hazard}%
+%%             }\\%
+%%             \subfigure[][Remote driving delay violate]{%
+%%                 \includegraphics[width=.3\textwidth]{img/draft-remote-driving-delay-violations.pdf}%
+%%                 \label{fig:delay-remote}%
+%%             }%
+%%             \subfigure[][Coop. aware. delay violate]{%
+%%                 \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-delay-violations.pdf}%
+%%                 \label{fig:delay-cooperative}%
+%%             }%
+%%             \subfigure[][Hazard warn. violate]{%
+%%                 \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-delay-violations.pdf}%
+%%                 \label{fig:delay-hazard}%
+%%             }%
+%%         \caption[]{
+%%             Cost savings and delay violations due to scaling --
+%%             TES with online training was used.
+%%         }%
+%%     \end{figure}
+%% 
+%% \end{frame}
+%% 
+%% 
+%% 
+%% \setcounter{framenumber}{\value{backupcounter}}
+%% \setcounter{figure}{\value{backupfigcounter}}
+%% \begin{frame}
+%%    \frametitle{\secname}
+%%    \framesubtitle{\subsecname}
+%% 
+%%    \begin{figure}
+%%        \centering
+%%            \subfigure[][Remote driving savings]{%
+%%                \includegraphics[width=.3\textwidth]{img/draft-remote-driving-cost-highlight.pdf}%
+%%                \label{fig:cost-remote}%
+%%            }%
+%%            \subfigure[][Coop. aware. savings]{%
+%%                \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-cost.pdf}%
+%%                \label{fig:cost-cooperative}%
+%%            }%
+%%            \subfigure[][Hazard warn. savings]{%
+%%                \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-cost.pdf}%
+%%                \label{fig:cost-hazard}%
+%%            }\\%
+%%            \subfigure[][Remote driving delay violate]{%
+%%                \includegraphics[width=.3\textwidth]{img/draft-remote-driving-delay-violations-highlight.pdf}%
+%%                \label{fig:delay-remote}%
+%%            }%
+%%            \subfigure[][Coop. aware. delay violate]{%
+%%                \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-delay-violations.pdf}%
+%%                \label{fig:delay-cooperative}%
+%%            }%
+%%            \subfigure[][Hazard warn. violate]{%
+%%                \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-delay-violations.pdf}%
+%%                \label{fig:delay-hazard}%
+%%            }%
+%%        \caption[]{
+%%            Cost savings and delay violations due to scaling --
+%%            TES with online training was used.
+%%        }%
+%%    \end{figure}
 %% \end{frame}
 
 
 
 
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{\subsecname}
 
-    \begin{minipage}{0.37\textwidth}
-        \textbf{Dataset} to derive $\lambda(t)$:
-        \begin{itemize}
-            \item 116 roads in Torino
-            \item (lat,lng) of roads
-            \item traffic [vehicles/hour] each 5 min.
-            \item avg. speed [vehicles/hour] each 5 min.
-            \item from 28/01/2020 -- now
-        \end{itemize}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.6\textwidth}
-        \begin{figure}
-            \centering
-            \includegraphics[width=.9\textwidth]{img/traffic-drop.pdf}
-            \caption{Traffic after COVID-19 lockdowns -- 8~March.}
-        \end{figure}
-    \end{minipage}
-\end{frame}
-
-
-
-
-
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{\subsecname}
-
-    \begin{figure}
-        \animategraphics[autoplay,loop,trim = 0 100px 0 100px, width=.6\textwidth]{10}{img/torino-traffic-}{0}{27}
-        \caption{Vehicular traffic -- wee hours @Torino.}
-    \end{figure}
-\end{frame}
-
-
-
-
-
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{\subsecname}
-
-    \begin{minipage}{0.37\textwidth}
-        Predict future traffic $\lambda(t+n)$
-        \begin{itemize}
-            \item \textbf{time-series techniques}: DES, TES
-            \item \textbf{proprietary}: HTM
-            \item \textbf{neural networks}: GRU, LSTM, TCN, TCNLSTM
-        \end{itemize}
-        
-        Patterns:
-        \begin{itemize}
-            \item strong \textbf{seasonality}.
-            \onslide<2->{\item week \& weekend flows}
-            \item \onslide<3->{night hours,} \onslide<4->{rush hours,} \onslide<5->{schools' out}
-        \end{itemize}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.6\textwidth}
-        \begin{figure}
-            \centering
-            \only<1>{\includegraphics[width=.9\textwidth]{img/orbassano-flow.pdf}}%
-            \only<2>{\includegraphics[width=.9\textwidth]{img/orbassano-flow-annotate-weekend.pdf}}%
-            \only<3>{\includegraphics[width=.9\textwidth]{img/orbassano-flow-annotate-night.pdf}}%
-            \only<4>{\includegraphics[width=.9\textwidth]{img/orbassano-flow-annotate-rush.pdf}}%
-            \only<5>{\includegraphics[width=.9\textwidth]{img/orbassano-flow-annotate-shools-out.pdf}}%
-            \caption{Weekly traffic at Corso Orbassano road.}
-        \end{figure}
-    \end{minipage}
-\end{frame}
-
-
-
-
-
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{\subsecname}
-
-    \begin{minipage}{0.37\textwidth}
-            \textbf{non-COVID-19} (2020)
-                \begin{itemize}
-                    \item training: 28\textsuperscript{th}Feb - 28\textsuperscript{th}Mar
-                    \item testing: 29\textsuperscript{th}Feb - 07\textsuperscript{th}Mar
-                \end{itemize}
-            \textbf{COVID-19} (2020)
-                \begin{itemize}
-                    \item training: 06\textsuperscript{th}Feb - 07\textsuperscript{th}Mar
-                    \item testing: 08\textsuperscript{th}Mar - 15\textsuperscript{th}Mar
-                \end{itemize}
-        \vspace{1.5em}
-        \onslide<2->{\textbf{Train}:
-            \begin{itemize}
-                \item offline training
-                \item online training
-            \end{itemize}
-        }
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.6\textwidth}
-        \only<2->{\begin{figure}
-                \centering
-                \includegraphics[width=.9\textwidth]{img/online-training-high-res.pdf}%
-                \caption{Online training.}
-            \end{figure}
-        }
-    \end{minipage}
-
-\end{frame}
-
-
-
-
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{\subsecname}
-
-    \begin{minipage}{0.37\textwidth}
-        \textbf{Vertical scaling}:
-        \begin{enumerate}
-            \item $\lambda(t+n)$: traffic prediction
-            \only<2>{\item derive $c(t+n)$ s.t.:
-                \begin{equation}
-                    \frac{1}{\mu} + \frac{P_Q}{c(t+n)\mu-\lambda(t+n)}\le D(s)
-                \end{equation}
-                with $D(s)$ the target delay
-            }
-        \end{enumerate}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.6\textwidth}
-        \begin{figure}
-            \centering
-            \only<1>{\includegraphics[width=.9\textwidth]{img/MMc-scaling-1.pdf}}%
-            \only<2>{\includegraphics[width=.9\textwidth]{img/MMc-scaling.pdf}}
-            \caption{$M/M/c$-based scaling.}
-        \end{figure}
-    \end{minipage}
-\end{frame}
-
-
-
-
-
-
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{\subsecname}
-
-    \center{{\color{white}\_}\only<2>{Most accurate: \color{red}\textbf{Neural Networks}}}
-
-    \begin{figure}
-        \centering
-        \subfigure[][non-COVID-19]{%
-            \only<1>{\includegraphics[width=.49\textwidth]{img/draft-non-covid-offline-steps.pdf}}%
-            \only<2>{\includegraphics[width=.49\textwidth]{img/draft-non-covid-offline-steps-winner.pdf}}%
-            \label{fig:offline-non-covid-steps}%
-        }%
-        %\hspace{8pt}
-        \subfigure[][COVID-19]{%
-            \only<1>{\includegraphics[width=.49\textwidth]{img/draft-covid-offline-steps.pdf}}%
-            \only<2>{\includegraphics[width=.49\textwidth]{img/draft-covid-offline-steps-winner.pdf}}%
-            \label{fig:offline-covid-steps}%
-        }
-        \centering
-        \caption[]{
-            Prediction accuracy (offline training).
-        }%
-    \end{figure}
-\end{frame}
-
-
-
-
-
-
-
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{\subsecname}
-
-    \center{{\color{white}\_}\only<2>{Most accurate: \color{red}\textbf{TES}}}
-
-    \begin{figure}
-        \centering
-        \subfigure[][non-COVID-19]{%
-            \only<1>{\includegraphics[width=.49\textwidth]{img/draft-non-covid-online-steps.pdf}}%
-            \only<2>{\includegraphics[width=.49\textwidth]{img/draft-non-covid-online-steps-winner.pdf}}%
-            \label{fig:online-non-covid-steps}%
-        }%
-        %\hspace{8pt}%
-        \subfigure[][COVID-19]{%
-            \only<1>{\includegraphics[width=.49\textwidth]{img/draft-covid-online-steps.pdf}}%
-            \only<2>{\includegraphics[width=.49\textwidth]{img/draft-covid-online-steps-winner.pdf}}%
-            \label{fig:online-covid-steps}%
-        }%
-        \centering
-        \caption[]{
-            Prediction accuracy (online training).
-        }%
-    \end{figure}
-\end{frame}
-
-
-
-
-
-%%%%%    \begin{frame}
-%%%%%        \frametitle{\secname}
-%%%%%        \framesubtitle{\subsecname}
-%%%%%    
-%%%%%        \begin{figure}
-%%%%%            \centering
-%%%%%            \only<1>{
-%%%%%                \subfigure[][Remote driving savings]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-remote-driving-cost.pdf}%
-%%%%%                    \label{fig:cost-remote}%
-%%%%%                }%
-%%%%%                \subfigure[][Coop. aware. savings]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-cost.pdf}%
-%%%%%                    \label{fig:cost-cooperative}%
-%%%%%                }%
-%%%%%                \subfigure[][Hazard warn. savings]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-cost.pdf}%
-%%%%%                    \label{fig:cost-hazard}%
-%%%%%                }\\%
-%%%%%                \subfigure[][Remote driving delay violate]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-remote-driving-delay-violations.pdf}%
-%%%%%                    \label{fig:delay-remote}%
-%%%%%                }%
-%%%%%                \subfigure[][Coop. aware. delay violate]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-delay-violations.pdf}%
-%%%%%                    \label{fig:delay-cooperative}%
-%%%%%                }%
-%%%%%                \subfigure[][Hazard warn. violate]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-delay-violations.pdf}%
-%%%%%                    \label{fig:delay-hazard}%
-%%%%%                }%
-%%%%%            }%
-%%%%%            \only<2>{
-%%%%%                \subfigure[][Remote driving savings]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-remote-driving-cost-highlight.pdf}%
-%%%%%                    \label{fig:cost-remote}%
-%%%%%                }%
-%%%%%                \subfigure[][Coop. aware. savings]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-cost.pdf}%
-%%%%%                    \label{fig:cost-cooperative}%
-%%%%%                }%
-%%%%%                \subfigure[][Hazard warn. savings]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-cost.pdf}%
-%%%%%                    \label{fig:cost-hazard}%
-%%%%%                }\\
-%%%%%                \subfigure[][Remote driving delay violate]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-remote-driving-delay-violations-highlight.pdf}%
-%%%%%                    \label{fig:delay-remote}%
-%%%%%                }%
-%%%%%                \subfigure[][Coop. aware. delay violate]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-delay-violations.pdf}%
-%%%%%                    \label{fig:delay-cooperative}%
-%%%%%                }%
-%%%%%                \subfigure[][Hazard warn. violate]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-delay-violations.pdf}%
-%%%%%                    \label{fig:delay-hazard}%
-%%%%%                }%
-%%%%%            }%
-%%%%%            \only<3>{
-%%%%%                \subfigure[][Remote driving savings]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-remote-driving-cost.pdf}%
-%%%%%                    \label{fig:cost-remote}%
-%%%%%                }%
-%%%%%                \subfigure[][Coop. aware. savings]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-cost-highlight.pdf}%
-%%%%%                    \label{fig:cost-cooperative}%
-%%%%%                }%
-%%%%%                \subfigure[][Hazard warn. savings]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-cost.pdf}%
-%%%%%                    \label{fig:cost-hazard}%
-%%%%%                }\\%
-%%%%%                \subfigure[][Remote driving delay violate]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-remote-driving-delay-violations.pdf}%
-%%%%%                    \label{fig:delay-remote}%
-%%%%%                }%
-%%%%%                \subfigure[][Coop. aware. delay violate]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-delay-violations-highlight.pdf}%
-%%%%%                    \label{fig:delay-cooperative}%
-%%%%%                }%
-%%%%%                \subfigure[][Hazard warn. violate]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-delay-violations.pdf}%
-%%%%%                    \label{fig:delay-hazard}%
-%%%%%                }%
-%%%%%            }%
-%%%%%            \only<4>{
-%%%%%                \subfigure[][Remote driving savings]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-remote-driving-cost.pdf}%
-%%%%%                    \label{fig:cost-remote}%
-%%%%%                }%
-%%%%%                \subfigure[][Coop. aware. savings]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-cost.pdf}%
-%%%%%                    \label{fig:cost-cooperative}%
-%%%%%                }%
-%%%%%                \subfigure[][Hazard warn. savings]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-cost-highlight.pdf}%
-%%%%%                    \label{fig:cost-hazard}%
-%%%%%                }\\%
-%%%%%                \subfigure[][Remote driving delay violate]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-remote-driving-delay-violations.pdf}%
-%%%%%                    \label{fig:delay-remote}%
-%%%%%                }%
-%%%%%                \subfigure[][Coop. aware. delay violate]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-delay-violations.pdf}%
-%%%%%                    \label{fig:delay-cooperative}%
-%%%%%                }%
-%%%%%                \subfigure[][Hazard warn. violate]{%
-%%%%%                    \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-delay-violations-highlight.pdf}%
-%%%%%                    \label{fig:delay-hazard}%
-%%%%%                }%
-%%%%%            }%
-%%%%%            \caption[]{
-%%%%%                Cost savings and delay violations due to scaling --
-%%%%%                TES with online training was used.
-%%%%%            }%
-%%%%%        \end{figure}
-%%%%%    \end{frame}
-
-
-
-
-
-
-
-
-
-
-\newcounter{backupcounter}
-\newcounter{backupfigcounter}
-\setcounter{backupcounter}{\value{framenumber}}
-\setcounter{backupfigcounter}{\value{figure}}
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{\subsecname}
-
-    \begin{figure}
-        \centering
-            \subfigure[][Remote driving savings]{%
-                \includegraphics[width=.3\textwidth]{img/draft-remote-driving-cost.pdf}%
-                \label{fig:cost-remote}%
-            }%
-            \subfigure[][Coop. aware. savings]{%
-                \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-cost.pdf}%
-                \label{fig:cost-cooperative}%
-            }%
-            \subfigure[][Hazard warn. savings]{%
-                \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-cost.pdf}%
-                \label{fig:cost-hazard}%
-            }\\%
-            \subfigure[][Remote driving delay violate]{%
-                \includegraphics[width=.3\textwidth]{img/draft-remote-driving-delay-violations.pdf}%
-                \label{fig:delay-remote}%
-            }%
-            \subfigure[][Coop. aware. delay violate]{%
-                \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-delay-violations.pdf}%
-                \label{fig:delay-cooperative}%
-            }%
-            \subfigure[][Hazard warn. violate]{%
-                \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-delay-violations.pdf}%
-                \label{fig:delay-hazard}%
-            }%
-        \caption[]{
-            Cost savings and delay violations due to scaling --
-            TES with online training was used.
-        }%
-    \end{figure}
-
-\end{frame}
-
-
-
-\setcounter{framenumber}{\value{backupcounter}}
-\setcounter{figure}{\value{backupfigcounter}}
-\begin{frame}
-   \frametitle{\secname}
-   \framesubtitle{\subsecname}
-
-   \begin{figure}
-       \centering
-           \subfigure[][Remote driving savings]{%
-               \includegraphics[width=.3\textwidth]{img/draft-remote-driving-cost-highlight.pdf}%
-               \label{fig:cost-remote}%
-           }%
-           \subfigure[][Coop. aware. savings]{%
-               \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-cost.pdf}%
-               \label{fig:cost-cooperative}%
-           }%
-           \subfigure[][Hazard warn. savings]{%
-               \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-cost.pdf}%
-               \label{fig:cost-hazard}%
-           }\\%
-           \subfigure[][Remote driving delay violate]{%
-               \includegraphics[width=.3\textwidth]{img/draft-remote-driving-delay-violations-highlight.pdf}%
-               \label{fig:delay-remote}%
-           }%
-           \subfigure[][Coop. aware. delay violate]{%
-               \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-delay-violations.pdf}%
-               \label{fig:delay-cooperative}%
-           }%
-           \subfigure[][Hazard warn. violate]{%
-               \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-delay-violations.pdf}%
-               \label{fig:delay-hazard}%
-           }%
-       \caption[]{
-           Cost savings and delay violations due to scaling --
-           TES with online training was used.
-       }%
-   \end{figure}
-\end{frame}
-
-
-
-
-
-\setcounter{framenumber}{\value{backupcounter}}
-\setcounter{figure}{\value{backupfigcounter}}
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{\subsecname}
-
-    \begin{figure}
-        \centering
-            \subfigure[][Remote driving savings]{%
-                \includegraphics[width=.3\textwidth]{img/draft-remote-driving-cost.pdf}%
-                \label{fig:cost-remote}%
-            }%
-            \subfigure[][Coop. aware. savings]{%
-                \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-cost-highlight.pdf}%
-                \label{fig:cost-cooperative}%
-            }%
-            \subfigure[][Hazard warn. savings]{%
-                \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-cost-highlight.pdf}%
-                \label{fig:cost-hazard}%
-            }\\%
-            \subfigure[][Remote driving delay violate]{%
-                \includegraphics[width=.3\textwidth]{img/draft-remote-driving-delay-violations.pdf}%
-                \label{fig:delay-remote}%
-            }%
-            \subfigure[][Coop. aware. delay violate]{%
-                \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-delay-violations-highlight.pdf}%
-                \label{fig:delay-cooperative}%
-            }%
-            \subfigure[][Hazard warn. violate]{%
-                \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-delay-violations-highlight.pdf}%
-                \label{fig:delay-hazard}%
-            }%
-        \caption[]{
-            Cost savings and delay violations due to scaling --
-            TES with online training was used.
-        }%
-    \end{figure}
-\end{frame}
+%% \setcounter{framenumber}{\value{backupcounter}}
+%% \setcounter{figure}{\value{backupfigcounter}}
+%% \begin{frame}
+%%     \frametitle{\secname}
+%%     \framesubtitle{\subsecname}
+%% 
+%%     \begin{figure}
+%%         \centering
+%%             \subfigure[][Remote driving savings]{%
+%%                 \includegraphics[width=.3\textwidth]{img/draft-remote-driving-cost.pdf}%
+%%                 \label{fig:cost-remote}%
+%%             }%
+%%             \subfigure[][Coop. aware. savings]{%
+%%                 \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-cost-highlight.pdf}%
+%%                 \label{fig:cost-cooperative}%
+%%             }%
+%%             \subfigure[][Hazard warn. savings]{%
+%%                 \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-cost-highlight.pdf}%
+%%                 \label{fig:cost-hazard}%
+%%             }\\%
+%%             \subfigure[][Remote driving delay violate]{%
+%%                 \includegraphics[width=.3\textwidth]{img/draft-remote-driving-delay-violations.pdf}%
+%%                 \label{fig:delay-remote}%
+%%             }%
+%%             \subfigure[][Coop. aware. delay violate]{%
+%%                 \includegraphics[width=.3\textwidth]{img/draft-cooperative-awareness-delay-violations-highlight.pdf}%
+%%                 \label{fig:delay-cooperative}%
+%%             }%
+%%             \subfigure[][Hazard warn. violate]{%
+%%                 \includegraphics[width=.3\textwidth]{img/draft-hazard-warning-delay-violations-highlight.pdf}%
+%%                 \label{fig:delay-hazard}%
+%%             }%
+%%         \caption[]{
+%%             Cost savings and delay violations due to scaling --
+%%             TES with online training was used.
+%%         }%
+%%     \end{figure}
+%% \end{frame}
 
 
 
@@ -2266,27 +2389,27 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 
 
-\subsection{Output}
-\begin{frame}
-    \frametitle{Outline}
-    \tableofcontents[subsectionstyle=show/shaded/hide,sectionstyle=show/shaded]
-\end{frame}
-
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{\subsecname}
-    Publications:
-    \begin{itemize}
-        \item \fullcite{eucnc-v2n}
-        \item \fullcite{v2n-access}
-    \end{itemize}
-
-    Open-source (to be released):
-    \begin{itemize}
-        \item \url{https://github.com/MartinPJorge/5growth-scaling/}
-        \item \url{https://github.com/MartinPJorge/5growth-forecasting/}
-    \end{itemize}
-\end{frame}
+%% \subsection{Output}
+%% \begin{frame}
+%%     \frametitle{Outline}
+%%     \tableofcontents[subsectionstyle=show/shaded/hide,sectionstyle=show/shaded]
+%% \end{frame}
+%% 
+%% \begin{frame}
+%%     \frametitle{\secname}
+%%     \framesubtitle{\subsecname}
+%%     Publications:
+%%     \begin{itemize}
+%%         \item \fullcite{eucnc-v2n}
+%%         \item \fullcite{v2n-access}
+%%     \end{itemize}
+%% 
+%%     Open-source (to be released):
+%%     \begin{itemize}
+%%         \item \url{https://github.com/MartinPJorge/5growth-scaling/}
+%%         \item \url{https://github.com/MartinPJorge/5growth-forecasting/}
+%%     \end{itemize}
+%% \end{frame}
 
 
 
@@ -2318,10 +2441,10 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         This thesis contributions:
         \onslide<2->{
             \begin{enumerate}
-                \item generate \textbf{5G graphs}
+                \item generate \textbf{5G graphs} meeting 1ms RTT
                 \only<3->{\item DQN maximizes revenue under \textbf{federation} and dynamic pricing}
                 \only<4->{\item OKpi minimizes \textbf{VNE} cost meeting: latency, reliability, and availability constraints}
-                \only<5->{\item TES \& online training \textbf{scaling} reduces the E2E latency violations}
+                % \only<5->{\item TES \& online training \textbf{scaling} reduces the E2E latency violations}
             \end{enumerate}
         }
     \end{minipage}
@@ -2332,13 +2455,13 @@ line/.code={\tikzset{ul line/.append style={#1}}},
             \only<2>{\includegraphics[width=\textwidth]{img/big-picture-infra-gen-highlight-ar.pdf}}%
             \only<3>{\includegraphics[width=\textwidth]{img/big-picture-federation.pdf}}%
             \only<4>{\includegraphics[width=\textwidth]{img/big-picture-vne.pdf}}%
-            \only<5>{\includegraphics[width=\textwidth]{img/big-picture-scaling.pdf}}%
+            % \only<5>{\includegraphics[width=\textwidth]{img/big-picture-scaling.pdf}}%
             \caption{%
                 \only<1>{Service orchestration.}%
                 \only<2>{Service orchestration --  infrastructure generation.}%
                 \only<3>{Service orchestration --  federation.}%
                 \only<4>{Service orchestration -- VNE.}%
-                \only<5>{Service orchestration -- scaling.}%
+                % \only<5>{Service orchestration -- scaling.}%
             }
         \end{figure}
     \end{minipage}
@@ -2356,7 +2479,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         \item \textbf{generate federated} scenarios BSs, PoPs \& datacenters, all at once\pause
         \item \textbf{DQN} agent +\textbf{LSTM} layer to \textbf{predict}\pause
         \item \textbf{OKpi} study on $\gamma$/runtime/optimality \pause
-        \item \textbf{V2N scaling} to meet \textbf{99.9999\%} latency quantile \& use \textbf{ST-GCN}
+        % \item \textbf{V2N scaling} to meet \textbf{99.9999\%} latency quantile \& use \textbf{ST-GCN}
     \end{enumerate}
 \end{frame}
 
@@ -2371,18 +2494,17 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         \begin{itemize}
             \item Conferences:
                 \begin{enumerate}
-                    \item IEEE CSCN~\cite{5gen}
                     \item IEEE BMSB~\cite{icc}
-                    \item IEEE ICC~\cite{icc}
+                    \item IEEE CSCN~\cite{5gen}
                     \item IEEE INFOCOM~\cite{okpi}
-                    \item EuCNC~\cite{okpi}
+                    \item IEEE ICC~\cite{icc}
                 \end{enumerate}
             \item Journals:
                 \begin{enumerate}
                     \item IEEE TB~\cite{modelling-bs}
-                    \item IEEE TNSM~\cite{modelling-bs}
-                    \item IEEE TON~\cite{okpi-ton}
                     \item IEEE TMC~\cite{tmc}
+                    \item IEEE TNSM~\cite{dqn}
+                    \item IEEE TON~\cite{okpi-ton}
                 \end{enumerate}
         \end{itemize}
     \end{minipage}
@@ -2691,17 +2813,6 @@ line/.code={\tikzset{ul line/.append style={#1}}},
    \end{minipage}
 \end{frame}
 
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{Increase of local and federated resources}
-
-    \begin{figure}
-        \centering
-        \subfigure[Increasing local resources.]{\includegraphics[width=.45\columnwidth]{img/shrink-local.eps}}\hspace{1em}
-        \subfigure[Increasing resources in federation.]{\includegraphics[width=.45\columnwidth]{img/shrink-federated.eps}}
-        \caption{Cumulative reward vs. available resources.}
-    \end{figure}
-\end{frame}
 
 
 
@@ -2736,114 +2847,16 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 
 
-%%%%%%%%% OLD OKPI EXPLANATION %%%%%%%%%%
+
+
 \begin{frame}
     \frametitle{\secname}
-    \framesubtitle{\subsecname}
-
-    The \textbf{OKpi} (all KPI) solution:
-    \begin{itemize}
-        \item infrastructure as a graph
-        \item edges with:
-            \begin{itemize}
-                \item delay
-                \item reliability
-            \end{itemize}
-    \end{itemize}
-    \vfill
-    Solve in two steps:
+    \framesubtitle{OKpi -- decision graph connections}
+    OKpi only connects $\tilde{n}_1^{d_1,r_1}$ with $\tilde{n}_2^{d_2,r_2}$ if:
     \begin{enumerate}
-        \item Create a decision graph 
-        \item Create an expanded graph
+        \item $d_1+\gamma\cdot d(\tilde{n}_1,\tilde{n}_2)\le d_2$
+        \item $r_1+\gamma\cdot r(\tilde{n}_1,\tilde{n}_2)\le r_2$
     \end{enumerate}
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{\subsecname}
-
-
-
-    \begin{minipage}{.39\textwidth}
-        \textbf{Decision graph} $\tilde{G}=(\tilde{N}, \tilde{E})$.\vspace{1em}
-        
-        \onslide<2->{Nodes $\tilde{N}=\{\tilde{n}_1, \tilde{n}_2, \ldots\}$:
-            \begin{itemize}
-                \item $|\mathcal{V}|-1$ replicas
-            \end{itemize}
-        }
-        \vspace{1em}
-        \onslide<3->{Edges $\tilde{E}=\{ (\tilde{n}_1,\tilde{n}_2),\ldots \}$:
-            \begin{itemize}
-                \item two weights:
-                    \begin{equation}
-                        \only<3>{\left( \frac{\tilde{D}_{\tilde{n}_1,\tilde{n}_2}}{D(s)}, \frac{\log \tilde{\eta}_{\tilde{n}_1,\tilde{n}_2}}{\log H(s)} \right)}%
-                        \only<4>{\Bigg( \highlight{ \frac{\tilde{D}_{\tilde{n}_1,\tilde{n}_2}}{D(s)} }{delay fraction}, \frac{\log \tilde{\eta}_{\tilde{n}_1,\tilde{n}_2}}{\log H(s)} \Bigg)}%
-                        \only<5>{\Bigg( \frac{\tilde{D}_{\tilde{n}_1,\tilde{n}_2}}{D(s)}, \highlight{ \frac{\log \tilde{\eta}_{\tilde{n}_1,\tilde{n}_2}}{\log H(s)} }{reliability fraction} \Bigg)}%
-                        \onslide<6->{\left( \frac{\tilde{D}_{\tilde{n}_1,\tilde{n}_2}}{D(s)}, \frac{\log \tilde{\eta}_{\tilde{n}_1,\tilde{n}_2}}{\log H(s)} \right)}%
-                    \end{equation}%
-                \vspace{-1em}
-                \onslide<6->{\item create links $(\tilde{n}_1,\tilde{n}_2)$}
-            \end{itemize}
-        }
-    \end{minipage}
-    \begin{minipage}{.6\textwidth}
-        \begin{figure}
-            \only<1>{\includegraphics[width=.8\textwidth]{img/decision-graph.pdf}}%
-            \only<2>{\includegraphics[width=.8\textwidth]{img/decision-graph-replicas.pdf}}%
-            \only<3>{\includegraphics[width=.8\textwidth]{img/decision-graph-replicas.pdf}}%
-            \only<4>{\includegraphics[width=.8\textwidth]{img/decision-graph-replicas.pdf}}%
-            \only<5>{\includegraphics[width=.8\textwidth]{img/decision-graph-replicas.pdf}}%
-            % \only<6>{\includegraphics[width=.8\textwidth]{img/decision-graph-edges.pdf}}%
-            \only<6>{\includegraphics[width=.8\textwidth]{img/decision-graph-edges-inter.pdf}}%
-            \caption{OKpi decision graph.}
-        \end{figure}
-    \end{minipage}
-
-\end{frame}
-
-
-
-
-
-
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{\subsecname}
-
-    \begin{minipage}{.39\textwidth}
-        \textbf{Expanded graph}:
-
-        \begin{enumerate}
-            \item add superscripts $\tilde{n}^{d,r}$
-                \begin{itemize}
-                    \item $d$: delay to reach it
-                    \item $r$: reliab. to reach it
-                \end{itemize}
-            \onslide<2->{\item add $(\gamma+1)^2$ replicas}
-            \onslide<3->{\item connect $\tilde{n_1}^{d_1,r_2}$ with $\tilde{n_2}^{d_2,r_2}$}
-                \onslide<4->{
-                    \begin{itemize}
-                        \item link $(\tilde{n}_1,\tilde{n}_2)\in\tilde{E}$
-                        \item $d_1+\gamma\cdot d(\tilde{n}_1,\tilde{n}_2)\le d_2$
-                        \item $r_1+\gamma\cdot r(\tilde{n}_1,\tilde{n}_2)\le r_2$
-                    \end{itemize}
-                }
-            \onslide<5->{\item one hop per VNF}
-        \end{enumerate}
-    \end{minipage}
-    \begin{minipage}{.6\textwidth}
-        \begin{figure}
-            \only<1>{\includegraphics[width=.8\textwidth]{img/expanded-one-node.pdf}}%
-            \only<2>{\includegraphics[width=.8\textwidth]{img/expanded-one-node-replicas.pdf}}%
-            \only<3>{\includegraphics[width=.8\textwidth]{img/expanded-all-connections.pdf}}%
-            \only<4>{\includegraphics[width=.8\textwidth]{img/expanded-feasible-connections.pdf}}%
-            \only<5>{\includegraphics[width=.8\textwidth]{img/expanded-solution-1.pdf}}%
-            \only<6>{\includegraphics[width=.8\textwidth]{img/expanded-solution-2.pdf}}%
-            \caption{OKpi expanded graph $\gamma=3$.}
-        \end{figure}
-    \end{minipage}
 \end{frame}
 
 
@@ -2868,66 +2881,72 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 \end{frame}
 
 
+%% 
+%% 
+%% \begin{frame}
+%%     \frametitle{\secname}
+%%     \framesubtitle{Part IV SoA}
+%% 
+%%     V2N scaling solutions:
+%%     \begin{itemize}
+%%         \item asign radio resource blocks~\cite{pi-road}
+%%         \item computing resources scaling:
+%%             \begin{itemize}
+%%                 \item threshold-based~\cite{5gt-v2x,luis-v2x}
+%%                 \item LSTM-based~\cite{automec}
+%%                 {\color{red}\item  \textbf{compare}:
+%%                     \begin{itemize}
+%%                         \item \color{red} DES, TES
+%%                         \item \color{red} HTM
+%%                         \item \color{red} GRU
+%%                         \item \color{red} LSTM
+%%                         \item \color{red} TCN
+%%                         \item \color{red} TCNLSTM
+%%                     \end{itemize}
+%%                 }
+%%             \end{itemize}
+%%     \end{itemize}
+%% \end{frame}
 
 
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{Part IV SoA}
-
-    V2N scaling solutions:
-    \begin{itemize}
-        \item asign radio resource blocks~\cite{pi-road}
-        \item computing resources scaling:
-            \begin{itemize}
-                \item threshold-based~\cite{5gt-v2x,luis-v2x}
-                \item LSTM-based~\cite{automec}
-                {\color{red}\item  \textbf{compare}:
-                    \begin{itemize}
-                        \item \color{red} DES, TES
-                        \item \color{red} HTM
-                        \item \color{red} GRU
-                        \item \color{red} LSTM
-                        \item \color{red} TCN
-                        \item \color{red} TCNLSTM
-                    \end{itemize}
-                }
-            \end{itemize}
-    \end{itemize}
-\end{frame}
 
 
 
-\begin{frame}
-    \frametitle{\secname}
-    \framesubtitle{V2N scaling -- forecasting parameters}
 
 
-    \begin{table}[htb]
-    \small
-        \centering
-        \caption{Evaluation Parameters}
-        \label{tab:ep}
-        %\vspace{-2mm}
-        \begin{tabular}{|p{0.3\columnwidth}|p{0.35\columnwidth}|p{0.21\columnwidth}|} \hline
-         \textbf{Parameter} & \textbf{Forecasting techniques} &\textbf{Value}  \\ \hline
-             Level factor ($\alpha$) & DES, TES & 0.5, 0.5\\ \hline
-             Trend factor  ($\beta$)  & DES, TES & 0.001, 0.001\\ \hline
-             Seasonality factor ($\gamma$) & TES & 0.001 (3 days)\\  \hline
-             Hidden layers & TCN, LSTM, GRU, TCNLSTM & 2,2, 1, 4  \\ \hline
-             Neurons in hidden layer & TCN, LSTM, GRU, TCNLSTM & 100  \\ \hline
-             Epochs   & TCN, LSTM, GRU, TCNLSTM & 100  \\ \hline
-            \multirow{2}{*}{history Window size ($h$)} & TCN, LSTM, TCNLSTM & 60~min. \\ \cline{2-3}
-            & GRU & 120~min. \\ \hline
-             Batch size  & TCN, LSTM, GRU & 5 \\ \hline
-             Temporal memory & \multirow{2}{*}{HTM} & 32x2048\\ \cline{1-1}\cline{3-3}
-             Encoder representation & & 1024 bit str\\ \hline
-             %Dataset split (Train:Test) & STM & (80:20) \\ \hline
-        \end{tabular}
-        %\vspace{-3mm}
-    \end{table}
-    
 
-\end{frame}
+
+%% \begin{frame}
+%%     \frametitle{\secname}
+%%     \framesubtitle{V2N scaling -- forecasting parameters}
+%% 
+%% 
+%%     \begin{table}[htb]
+%%     \small
+%%         \centering
+%%         \caption{Evaluation Parameters}
+%%         \label{tab:ep}
+%%         %\vspace{-2mm}
+%%         \begin{tabular}{|p{0.3\columnwidth}|p{0.35\columnwidth}|p{0.21\columnwidth}|} \hline
+%%          \textbf{Parameter} & \textbf{Forecasting techniques} &\textbf{Value}  \\ \hline
+%%              Level factor ($\alpha$) & DES, TES & 0.5, 0.5\\ \hline
+%%              Trend factor  ($\beta$)  & DES, TES & 0.001, 0.001\\ \hline
+%%              Seasonality factor ($\gamma$) & TES & 0.001 (3 days)\\  \hline
+%%              Hidden layers & TCN, LSTM, GRU, TCNLSTM & 2,2, 1, 4  \\ \hline
+%%              Neurons in hidden layer & TCN, LSTM, GRU, TCNLSTM & 100  \\ \hline
+%%              Epochs   & TCN, LSTM, GRU, TCNLSTM & 100  \\ \hline
+%%             \multirow{2}{*}{history Window size ($h$)} & TCN, LSTM, TCNLSTM & 60~min. \\ \cline{2-3}
+%%             & GRU & 120~min. \\ \hline
+%%              Batch size  & TCN, LSTM, GRU & 5 \\ \hline
+%%              Temporal memory & \multirow{2}{*}{HTM} & 32x2048\\ \cline{1-1}\cline{3-3}
+%%              Encoder representation & & 1024 bit str\\ \hline
+%%              %Dataset split (Train:Test) & STM & (80:20) \\ \hline
+%%         \end{tabular}
+%%         %\vspace{-3mm}
+%%     \end{table}
+%%     
+%% 
+%% \end{frame}
 
 
 

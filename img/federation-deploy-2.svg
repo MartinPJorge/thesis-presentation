@@ -130,9 +130,9 @@
      inkscape:window-height="704"
      id="namedview4"
      showgrid="false"
-     inkscape:zoom="0.5221679"
-     inkscape:cx="413.12571"
-     inkscape:cy="133.65732"
+     inkscape:zoom="2.0886716"
+     inkscape:cx="305.2254"
+     inkscape:cy="246.60226"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
@@ -289,6 +289,8 @@
 
 
 
+
+
 <g
    id="g120"><g
      id="g122"
@@ -415,6 +417,8 @@
 
 
 
+
+
 <g
    id="g260"><g
      id="g262"
@@ -442,6 +446,8 @@
      y="0"
      sodipodi:role="line"
      id="tspan278">overall income</tspan></text>
+
+
 
 
 
@@ -610,6 +616,8 @@
 
 
 
+
+
 <path
    style="opacity:1;fill:#71adbd;fill-opacity:1;fill-rule:evenodd;stroke:#231f20;stroke-width:0.60000002;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
    d="m 253.59006,161.72276 c -4.94841,-1.44403 -9.02145,-5.59325 -10.2967,-10.48927 -0.45836,-1.75976 -0.45588,-5.07997 0.005,-6.90133 1.26477,-4.99665 5.20711,-9.03733 10.29155,-10.54826 2.12906,-0.63269 5.49902,-0.58242 7.78007,0.11606 4.64796,1.42325 8.26976,4.94391 9.71793,9.44653 0.77795,2.41882 0.87076,5.65486 0.23109,8.05713 -1.31977,4.95624 -5.24145,8.91438 -10.1836,10.27825 -2.25224,0.62155 -5.49548,0.63912 -7.54549,0.0409 z"
@@ -633,6 +641,8 @@
      y="-88.549789"
      style="stroke-width:0.75">USER</tspan></text>
 
+
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14px;line-height:0.80000001;font-family:'Deja Vu Sans';-inkscape-font-specification:'Deja Vu Sans Bold';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:end;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:end;white-space:normal;shape-padding:0;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -644,12 +654,14 @@
      id="tspan39139"
      x="328.64041"
      y="-217.392"
-     style="font-size:12px;line-height:0.80000001;text-align:end;text-anchor:end;stroke-width:0.75">Federation operator</tspan><tspan
+     style="font-size:12px;line-height:0.80000001;text-align:end;text-anchor:end;stroke-width:0.75">Federated operator</tspan><tspan
      sodipodi:role="line"
      x="328.64041"
      y="-206.192"
      style="font-size:12px;line-height:0.80000001;text-align:end;text-anchor:end;stroke-width:0.75"
      id="tspan39143">serv. prov. agents</tspan></text>
+
+
 <text
    xml:space="preserve"
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14px;line-height:0.80000001;font-family:'Deja Vu Sans';-inkscape-font-specification:'Deja Vu Sans Bold';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:center;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:middle;white-space:normal;shape-padding:0;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.75;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -661,7 +673,7 @@
      id="tspan39139-3"
      x="389.9263"
      y="-225.02956"
-     style="font-size:12px;line-height:0.80000001;text-align:center;text-anchor:middle;stroke-width:0.75">Federation</tspan><tspan
+     style="font-size:12px;line-height:0.80000001;text-align:center;text-anchor:middle;stroke-width:0.75">Federated</tspan><tspan
      sodipodi:role="line"
      x="389.9263"
      y="-213.82956"
@@ -672,4 +684,6 @@
      y="-202.62956"
      style="font-size:12px;line-height:0.80000001;text-align:center;text-anchor:middle;stroke-width:0.75"
      id="tspan39143-6">infrastructure</tspan></text>
+
+
 </g></svg>

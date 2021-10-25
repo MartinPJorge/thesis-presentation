@@ -158,9 +158,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="537.58643"
-     inkscape:cy="191.66609"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="708.81936"
+     inkscape:cy="183.13956"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -367,22 +367,22 @@
        inkscape:connector-curvature="0" />
     <path
        d="m 84.737994,209.05971 c 0.04081,-2.23167 0.06787,-4.69201 0.06787,-5.46287 v -1.4024 h 7.388601 v 10.92765 h -7.523032 z m 4.115452,2.72576 c 0.528247,-0.50731 -0.226,-1.24811 -0.781067,-0.7658 -0.22909,0.19938 -0.23777,0.41293 -0.0254,0.70169 0.1872,0.25554 0.575907,0.28541 0.808957,0.0642 z m -0.0689,-1.77 c 0.252017,-0.16952 0.310177,-0.61652 0.105067,-0.81296 -0.199957,-0.19129 -0.777464,-0.14422 -0.898024,0.0739 -0.15761,0.28236 -0.1311,0.47517 0.0975,0.69525 0.24691,0.23683 0.393817,0.24492 0.695057,0.0456 z m 2.503105,-2.86497 c 0.16989,-0.14625 0.18926,-0.3426 0.18926,-1.91948 0,-1.62592 -0.0155,-1.77172 -0.20662,-1.95309 -0.19437,-0.18672 -0.341797,-0.19837 -2.746365,-0.19837 -2.135238,0 -2.580292,0.0253 -2.770707,0.15435 -0.222426,0.14776 -0.227538,0.20141 -0.227538,2.01178 0,1.66777 0.0206,1.87065 0.178568,1.96133 0.108678,0.0607 1.208176,0.10121 2.788487,0.10273 2.285878,0.003 2.630845,-0.0152 2.795345,-0.1594 z"
-       style="fill:#92cddc;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.03527781"
+       style="fill:#4472c4;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.03527781"
        id="path890-6-8-5-1-6-1-7"
        inkscape:connector-curvature="0" />
     <path
        d="m 86.140189,206.13248 v -0.59111 h 4.720635 v 1.18056 h -4.720635 z"
-       style="fill:#92cddc;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.03527781"
+       style="fill:#4472c4;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.03527781"
        id="path892-2-7-6-5-1-9-8"
        inkscape:connector-curvature="0" />
     <path
        d="m 86.140189,204.31057 v -0.63964 h 4.720635 v 1.27933 h -4.720635 z"
-       style="fill:#92cddc;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.03527781"
+       style="fill:#4472c4;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.03527781"
        id="path894-9-9-9-9-1-4-6"
        inkscape:connector-curvature="0" />
     <path
        d="m 85.294617,201.47737 0.122466,-0.12095 h 6.103568 l 0.098,0.0987 0.0985,0.0977 -1.932378,0.0253 c -1.062404,0.0151 -2.536225,0.0253 -3.273352,0.0253 h -1.340629 z"
-       style="fill:#92cddc;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.03527781"
+       style="fill:#4472c4;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.03527781"
        id="path896-1-2-3-7-5-7-8"
        inkscape:connector-curvature="0" />
     <path
@@ -477,22 +477,22 @@
        inkscape:connector-curvature="0" />
     <path
        d="m 50.603168,214.93924 c 0.0408,-2.23167 0.06787,-4.69201 0.06787,-5.46286 v -1.40241 h 7.388639 v 10.92765 h -7.52307 z m 4.11546,2.72576 c 0.528259,-0.50731 -0.225994,-1.24811 -0.781071,-0.7658 -0.22908,0.19938 -0.237756,0.41294 -0.02536,0.70169 0.187209,0.25554 0.575918,0.28541 0.808964,0.0642 z m -0.06886,-1.77 c 0.252028,-0.16952 0.310187,-0.61652 0.105074,-0.81296 -0.199963,-0.19129 -0.777466,-0.14422 -0.89803,0.0739 -0.157605,0.28237 -0.131099,0.47517 0.09747,0.69525 0.246909,0.23683 0.393824,0.24493 0.695052,0.0456 z m 2.503119,-2.86497 c 0.169892,-0.14625 0.189265,-0.34259 0.189265,-1.91948 0,-1.62592 -0.01545,-1.77172 -0.206614,-1.95308 -0.194381,-0.18672 -0.341803,-0.19837 -2.746386,-0.19837 -2.135254,0 -2.580304,0.0253 -2.770717,0.15434 -0.222432,0.14777 -0.227542,0.20141 -0.227542,2.01178 0,1.66778 0.0206,1.87065 0.178571,1.96133 0.108674,0.0607 1.208175,0.10121 2.788506,0.10273 2.285879,0.003 2.630855,-0.0152 2.795358,-0.1594 z"
-       style="fill:#92cddc;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.03527781"
+       style="fill:#4472c4;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.03527781"
        id="path890-6-8-5-1-6-1-7-2"
        inkscape:connector-curvature="0" />
     <path
        d="m 52.00536,212.01202 v -0.59112 h 4.720664 v 1.18056 H 52.00536 Z"
-       style="fill:#92cddc;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.03527781"
+       style="fill:#4472c4;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.03527781"
        id="path892-2-7-6-5-1-9-8-5"
        inkscape:connector-curvature="0" />
     <path
        d="m 52.00536,210.1901 v -0.63964 h 4.720664 v 1.27933 H 52.00536 Z"
-       style="fill:#92cddc;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.03527781"
+       style="fill:#4472c4;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.03527781"
        id="path894-9-9-9-9-1-4-6-4"
        inkscape:connector-curvature="0" />
     <path
        d="m 51.159792,207.35691 0.122465,-0.12095 h 6.103596 l 0.09798,0.0987 0.09845,0.0977 -1.932392,0.0253 c -1.062409,0.0151 -2.536241,0.0253 -3.273373,0.0253 h -1.340626 z"
-       style="fill:#92cddc;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.03527781"
+       style="fill:#4472c4;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.03527781"
        id="path896-1-2-3-7-5-7-8-4"
        inkscape:connector-curvature="0" />
     <path
@@ -565,7 +565,7 @@
          id="tspan1190-2-9"
          x="172.96797"
          y="176.8513"
-         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.3499999px;line-height:0.5;font-family:Calibri;-inkscape-font-specification:'Calibri Bold Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332">federation</tspan><tspan
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:6.3499999px;line-height:0.5;font-family:Calibri;-inkscape-font-specification:'Calibri Bold Italic';text-align:center;text-anchor:middle;stroke-width:0.26458332">federated</tspan><tspan
          sodipodi:role="line"
          x="172.96797"
          y="182.49574"
