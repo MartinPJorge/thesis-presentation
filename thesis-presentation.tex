@@ -1,4 +1,5 @@
 \documentclass[aspectratio=169]{beamer}
+\usepackage{multirow}
 \usepackage{listings}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -23,6 +24,8 @@
 \preto\fullcite{\AtNextCite{\defcounter{maxnames}{99}}}
 % MATH
 \usepackage{amsmath,amsfonts,amssymb,amsthm} % For math equations, theorems, symbols, etc
+\newcounter{dummy}
+\newtheorem{property}[dummy]{Property}
 \usepackage{mathtools}
 \usepackage{dsfont}
 \DeclareMathOperator*{\argmax}{arg\,max}
@@ -271,7 +274,6 @@ line/.code={\tikzset{ul line/.append style={#1}}},
                 \begin{itemize}
                     \item population census
                     \item access \& aggregation rings
-                    \item satisfy tactile latency 1ms
                 \end{itemize}
         \end{itemize}
     \end{minipage}
@@ -612,7 +614,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \end{itemize}
     Open-source:
     \begin{itemize}
-        \item \textbf{BS \& server generation}: \url{http://github.com/MartinPJorge/mec-generator/}
+        \item \textbf{BS \& server generation}: \url{https://github.com/MartinPJorge/mec-generator/}
         \item \textbf{5GEN}: \url{https://github.com/MartinPJorge/mec-generator/tree/5g-infra-gen/}
     \end{itemize}
     
@@ -1221,7 +1223,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \frametitle{\secname}
     \framesubtitle{\subsecname}
 
-    \textbf{OKpi} VNE idea: high $\gamma\implies$ more hops
+    \textbf{OKpi} VNE idea: high $\gamma\implies$ more hops\pause
     \begin{figure}
         \subfigure[$\gamma=0$]{\includegraphics[width=.34\textwidth]{img/expanded-gamma-0.pdf}}\hspace{1.5em}\vline\hspace{1.5em}
         \subfigure[$\gamma=3$]{\includegraphics[height=.6\textheight]{img/expanded-gamma-3.pdf}}
@@ -2316,10 +2318,10 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         This thesis contributions:
         \onslide<2->{
             \begin{enumerate}
-                \item generate \textbf{5G graphs} meeting standard requirements
-                \only<3->{\item maximize revenue under \textbf{federation} and dynamic pricing}
-                \only<4->{\item minimize \textbf{VNE} cost meeting: latency, reliability, and availability constraints}
-                \only<5->{\item reduce the E2E latency violations with the proposed \textbf{scaling}}
+                \item generate \textbf{5G graphs}
+                \only<3->{\item DQN maximizes revenue under \textbf{federation} and dynamic pricing}
+                \only<4->{\item OKpi minimizes \textbf{VNE} cost meeting: latency, reliability, and availability constraints}
+                \only<5->{\item TES \& online training \textbf{scaling} reduces the E2E latency violations}
             \end{enumerate}
         }
     \end{minipage}
@@ -2385,17 +2387,17 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         \end{itemize}
     \end{minipage}
     \begin{minipage}{.45\textwidth}
-        Open-source (GitHub):
+        Open-source -- {\color{uc3mblue}\href{https://github.com/MartinPJorge/}{MartinPJorge}}@GitHub:
         \begin{enumerate}
-            \item BS \& server generation
-            \item 5GEN R package
-            \item DFS, BFS w/ cutoffs
-            \item Q-table federation 
-            \item DQN federation + AWS env.
-            \item AMPLPY
-            \item network
-            \item OKpi
-            \item FMC
+            \item {\color{uc3mblue}\href{https://github.com/MartinPJorge/mec-generator/}{BS \& server generation}}
+            \item {\color{uc3mblue}\href{https://github.com/MartinPJorge/mec-generator/tree/5g-infra-gen/}{5GEN R package}}
+            \item {\color{uc3mblue}\href{https://github.com/MartinPJorge/placement/}{DFS, BFS w/ cutoffs}}
+            \item {\color{uc3mblue}\href{https://github.com/MartinPJorge/5gt-federation/}{Q-table federation }}
+            \item {\color{uc3mblue}\href{ https://github.com/MartinPJorge/5gt-federation/tree/extensionICC/utils/aws/}{DQN federation + AWS env.}}
+            \item {\color{uc3mblue}\href{https://github.com/ampl/amplpy/pull/24}{AMPLPY}}
+            \item {\color{uc3mblue}\href{https://github.com/networkx/networkx/pull/3358}{networkx}}
+            \item {\color{uc3mblue}\href{https://github.com/MartinPJorge/placement}{OKpi}}
+            \item {\color{uc3mblue}\href{https://github.com/MartinPJorge/placement}{FMC}}
         \end{enumerate}
     \end{minipage}
 \end{frame}
@@ -2424,6 +2426,14 @@ line/.code={\tikzset{ul line/.append style={#1}}},
     \center{\huge
         Thanks for your attention!
     }
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=.3\textwidth]{qr.eps}
+    \end{figure}
+
+    {\let\thefootnote\relax\footnote{{Presentation available at: \url{https://github.com/MartinPJorge/thesis-presentation/}
+    }}}
 \end{frame}
 
 
@@ -2463,18 +2473,17 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         \item Poisson Point Processes (PPPs)~\cite{stochastic-martina}
             \begin{itemize}
                 \item homogeneous~\cite{cran-vinay-moller,hetnets-cor}
-                \item hard-core~\cite{hard-core-cover} \pause
+                \item hard-core~\cite{hard-core-cover}
                 \item {\color{red}\textbf{inhomogeneous \& Matérn~II}}
             \end{itemize}
     \end{itemize}
-    \pause
     \vfill
     \hrule
     \vfill
     \textbf{Location of MEC PoPs}:
     \begin{itemize}
         \item along highways~\cite{usa-mec}
-        \item within stadiums~\cite{tokio-olympics} \pause
+        \item within stadiums~\cite{tokio-olympics}
         \item {\color{red}\textbf{population census}}
         \item {\color{red}\textbf{access \& aggregation rings}}
     \end{itemize}
@@ -2579,14 +2588,14 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         \item Alternating Direction Method of Multipliers (ADMM)~\cite{ad3Distributed}
         \item branching heuristic~\cite{consolidation}
         \item graph-based message passing~\cite{vertex-centric}
-        \item greedy with backtracking~\cite{balazsEmbedding} \pause
+        \item greedy with backtracking~\cite{balazsEmbedding}
         \item \textbf{\color{red}cutoffs in Dijkstra, DFS and BFS~\cite{multi-domain-msc}}
         \item \textbf{\color{red}Q-learning federation~\cite{icc}}
-    \end{itemize} \pause
-    Orchestration and \textbf{\color{red}dynamic pricing} in multi-domain: \pause
+    \end{itemize}
+    Orchestration and \textbf{\color{red}dynamic pricing} in multi-domain:
     \begin{itemize}
-        \item \textbf{\color{red}real-price traces AWS}\pause
-        \item \textbf{\color{red}Deep Q-learning}\pause
+        \item \textbf{\color{red}real-price traces AWS}
+        \item \textbf{\color{red}Deep Q-learning}
         \item \textbf{\color{red}Telefónica scenario}
     \end{itemize}
 \end{frame}
@@ -2601,7 +2610,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         \mbox{$p^{(t)}(\sigma)=(1+P)l^{(t)}(\sigma)$}
         \label{eq:service-fee}
     \end{equation}
-    with $P$ the profit margin, and $l^{(t)}$ the local deployment cost (based on uncertain phenomena).\pause 
+    with $P$ the profit margin, and $l^{(t)}$ the local deployment cost (based on uncertain phenomena).
 
     \vfill
 
@@ -2706,7 +2715,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
         \item maxZ: latency-aware, relaxed ILP~\cite{maxZ}
         \item z-TORCH: KPI monitoring, k-means VNF assign~\cite{z-TORCH}
         \item AIA: meet latency and throughput~\cite{adaptive-interference}
-    \end{itemize}\pause
+    \end{itemize}
     \textbf{\color{red}OKpi} accounts for:
     \begin{itemize}
         \item latency constraints
@@ -2741,7 +2750,7 @@ line/.code={\tikzset{ul line/.append style={#1}}},
                 \item reliability
             \end{itemize}
     \end{itemize}
-    \vfill\pause
+    \vfill
     Solve in two steps:
     \begin{enumerate}
         \item Create a decision graph 
@@ -2838,6 +2847,27 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 \end{frame}
 
 
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{OKpi -- expanded graph complexity}
+
+    \begin{property}
+        \label{prop:graphcomp}
+        The worst-case computational complexity of building the
+        expanded graph is 
+
+        \begin{equation}
+            \mbox{$O\left((\gamma+1)^4\cdot|\widetilde{N}|^2\cdot K\right)$}
+        \end{equation}
+    \end{property}
+    \begin{itemize}
+        \item $\gamma$: resolution parameter
+        \item $\widetilde{N}$: decision graph nodes
+        \item $K$: number of additive constraints (KPIs)
+    \end{itemize}
+\end{frame}
+
+
 
 
 \begin{frame}
@@ -2851,7 +2881,6 @@ line/.code={\tikzset{ul line/.append style={#1}}},
             \begin{itemize}
                 \item threshold-based~\cite{5gt-v2x,luis-v2x}
                 \item LSTM-based~\cite{automec}
-                \pause
                 {\color{red}\item  \textbf{compare}:
                     \begin{itemize}
                         \item \color{red} DES, TES
@@ -2865,6 +2894,41 @@ line/.code={\tikzset{ul line/.append style={#1}}},
             \end{itemize}
     \end{itemize}
 \end{frame}
+
+
+
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{V2N scaling -- forecasting parameters}
+
+
+    \begin{table}[htb]
+    \small
+        \centering
+        \caption{Evaluation Parameters}
+        \label{tab:ep}
+        %\vspace{-2mm}
+        \begin{tabular}{|p{0.3\columnwidth}|p{0.35\columnwidth}|p{0.21\columnwidth}|} \hline
+         \textbf{Parameter} & \textbf{Forecasting techniques} &\textbf{Value}  \\ \hline
+             Level factor ($\alpha$) & DES, TES & 0.5, 0.5\\ \hline
+             Trend factor  ($\beta$)  & DES, TES & 0.001, 0.001\\ \hline
+             Seasonality factor ($\gamma$) & TES & 0.001 (3 days)\\  \hline
+             Hidden layers & TCN, LSTM, GRU, TCNLSTM & 2,2, 1, 4  \\ \hline
+             Neurons in hidden layer & TCN, LSTM, GRU, TCNLSTM & 100  \\ \hline
+             Epochs   & TCN, LSTM, GRU, TCNLSTM & 100  \\ \hline
+            \multirow{2}{*}{history Window size ($h$)} & TCN, LSTM, TCNLSTM & 60~min. \\ \cline{2-3}
+            & GRU & 120~min. \\ \hline
+             Batch size  & TCN, LSTM, GRU & 5 \\ \hline
+             Temporal memory & \multirow{2}{*}{HTM} & 32x2048\\ \cline{1-1}\cline{3-3}
+             Encoder representation & & 1024 bit str\\ \hline
+             %Dataset split (Train:Test) & STM & (80:20) \\ \hline
+        \end{tabular}
+        %\vspace{-3mm}
+    \end{table}
+    
+
+\end{frame}
+
 
 
 
