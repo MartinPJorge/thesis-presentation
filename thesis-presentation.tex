@@ -1079,6 +1079,18 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 \end{frame}
 
 
+\begin{frame}
+    \frametitle{\secname}
+    \framesubtitle{\subsecname}
+    To solve the VNE problem \textbf{OKpi} imposes these constraints:
+    \begin{itemize}
+        \item latency constraint
+        \item radio technology constraint
+        \item geographical availability constraint
+        \item reliability constraint
+    \end{itemize}
+\end{frame}
+
 
 \begin{frame}
     \frametitle{\secname}
@@ -2864,12 +2876,22 @@ line/.code={\tikzset{ul line/.append style={#1}}},
 
 \begin{frame}
     \frametitle{\secname}
-    \framesubtitle{OKpi -- decision graph connections}
-    OKpi only connects $\tilde{n}_1^{d_1,r_1}$ with $\tilde{n}_2^{d_2,r_2}$ if:
-    \begin{enumerate}
-        \item $d_1+\gamma\cdot d(\tilde{n}_1,\tilde{n}_2)\le d_2$
-        \item $r_1+\gamma\cdot r(\tilde{n}_1,\tilde{n}_2)\le r_2$
-    \end{enumerate}
+    \framesubtitle{OKpi -- graph connections}
+
+    \textbf{Decision graph} edges have weights:
+    $w(\tilde{n}_1,\tilde{n}_2) = \left( \frac{\tilde{D}_{\tilde{n}_1,\tilde{n}_2}}{D(s)}, \frac{\log \tilde{\eta}_{\tilde{n}_1,\tilde{n}_2}}{\log H(s)} \right)$
+
+    \vfill
+
+    The \textbf{expanded graph} has nodes: $\{ \tilde{n}_1^{0,0}, \tilde{n}_2^{0,0}, \ldots, \tilde{n}_1^{\gamma,\gamma}, \tilde{n}_2^{\gamma,\gamma} \}$
+
+    \vfill
+
+    In the \textbf{expanded graph} OKpi creates \textbf{edges} as:
+    \begin{equation}
+        \tilde{n}_1^{d_1,r_1} \longrightarrow \tilde{n}_2^{d_1+\lceil \gamma w_1(\tilde{n}_1,\tilde{n}_2)\rceil, r_1+\lceil \gamma w_2(\tilde{n}_1,\tilde{n}_2)\rceil}
+    \end{equation}
+
 \end{frame}
 
 
